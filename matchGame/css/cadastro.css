@@ -22,7 +22,7 @@ body {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    border-left: 6px solid #ff3b30; 
+    border-left: 6px solid #009b2e; 
     animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -36,7 +36,7 @@ body {
 .register-card h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #007aff; 
+    color: #009b2e; 
     font-size: 24px;
 }
 
@@ -67,16 +67,16 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #ff9500; 
-    box-shadow: 0 0 5px rgba(255, 149, 0, 0.5);
+    border-color: #009b2e; 
+    box-shadow: 0 0 5px rgba(0, 255, 106, 0.5);
 }
 
 /* ===== Botão ===== */
 button {
     margin-top: 20px;
     padding: 14px;
-    background: #ff3b30; 
-    color: #fff;
+    background: #009b2e; 
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-weight: bold;
@@ -94,7 +94,7 @@ button {
 }
 
 .footer a {
-    color: #ff3b30;
+    color: #009b2e;
     text-decoration: none;
 }
 
