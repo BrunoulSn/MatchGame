@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.profile-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+.photo-buttons {
+  margin-top: 10px;
+}
+
+.photo-buttons button {
+  margin: 3px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.photo-buttons button:hover {
+  background: #3730a3;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#editBtn {
+  background: #4f46e5;
+  color: #fff;
+}
+
+#editBtn:hover {
+  background: #b45309;
+}
+
+#saveBtn {
+  background: #4f46e5;
+  color: #fff;
+}

@@ -35,7 +35,7 @@ function validarTelefone(telefone) {
 
 // Evento de envio do formulário
 form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita envio automático
+    e.preventDefault(); 
 
     // Validações
     if (!validarSenha(inputSenha.value, inputConfirmar.value)) {
@@ -71,6 +71,6 @@ form.addEventListener('submit', function(e) {
 
     // Redireciona após 1,5s
     setTimeout(() => {
-        window.location.href = 'sucesso.html';
+        window.location.href = 'matchGame/pages/sucesso.html';
     }, 1500);
 });
