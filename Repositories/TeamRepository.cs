@@ -26,13 +26,13 @@ namespace MyBffProject.Repositories
         public async Task CreateTeamAsync(Team team)
         {
             _context.Teams.Add(team);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
 
         public async Task UpdateTeamAsync(Team team)
         {
             _context.Teams.Update(team);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
 
         public async Task DeleteTeamAsync(int id)
@@ -41,7 +41,7 @@ namespace MyBffProject.Repositories
             if (team != null)
             {
                 _context.Teams.Remove(team);
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
             }
         }
     }
