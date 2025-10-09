@@ -1,0 +1,32 @@
+/* Define layout centralizado */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+  }
+  
+  /* Caixa branca com sombra e cantos arredondados */
+  .container {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Título verde para sucesso */
+  h1 {
+    color: rgb(34, 0, 128);
+    margin: 0;
+  }
+  
+  /* Texto menor */
+  p {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  
