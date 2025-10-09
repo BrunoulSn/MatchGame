@@ -1,7 +1,5 @@
-// cadastro.js
-
 // Seleciona o formulário e os inputs
-const form = document.querySelector('form');
+const form = document.getElementById('registerForm');
 const inputNome = document.getElementById('nome');
 const inputEmail = document.getElementById('email');
 const inputTelefone = document.getElementById('telefone');
@@ -10,8 +8,6 @@ const inputConfirmar = document.getElementById('confirmar');
 
 // Cria container de mensagens dinamicamente
 const mensagemDiv = document.createElement('div');
-mensagemDiv.style.marginTop = '15px';
-mensagemDiv.style.fontSize = '14px';
 form.appendChild(mensagemDiv);
 
 // Função para mostrar mensagem dentro do card
@@ -27,11 +23,9 @@ function validarSenha(senha, confirmar) {
 
 // Função para validar telefone (apenas números e 11 dígitos)
 function validarTelefone(telefone) {
-
   const numeros = telefone.replace(/\D/g, '');
   return numeros.length === 11;
 }
-
 
 // Evento de envio do formulário
 form.addEventListener('submit', function(e) {
@@ -52,9 +46,9 @@ form.addEventListener('submit', function(e) {
 
     // Cria objeto com dados do usuário
     const usuario = {
-        nome: inputNome.value,
-        email: inputEmail.value,
-        telefone: inputTelefone.value,
+        nome: inputNome.value.trim(),
+        email: inputEmail.value.trim(),
+        telefone: inputTelefone.value.trim(),
         senha: inputSenha.value
     };
 
@@ -69,8 +63,8 @@ form.addEventListener('submit', function(e) {
     // Limpa formulário
     form.reset();
 
-    // Redireciona após 1,5s
+    // Redireciona após 1,5 segundos para a página de sucesso
     setTimeout(() => {
-        window.location.href = 'matchGame/pages/sucesso.html';
+        window.location.href = '../pages/svcesso.html'; 
     }, 1500);
 });
