@@ -3634,9 +3634,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\MyBffProject.csproj",
-      "projectName": "MyBffProject",
-      "projectPath": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\MyBffProject.csproj",
+      "projectUniqueName": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\BFF_GameMatch.csproj",
+      "projectName": "BFF_GameMatch",
+      "projectPath": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\BFF_GameMatch.csproj",
       "packagesPath": "C:\\Users\\bruno.silva18\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\obj\\",
       "projectStyle": "PackageReference",

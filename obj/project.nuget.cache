@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "moiAUSL1q8R5UclS+3U3mSo135hfTsHDpW53mKLqTyaAJ6EjHVGhs8IH08c0lfdQS+nmr0hE1ymdYHfpQh+JAw==",
+  "dgSpecHash": "2kJC86epxdOByFViPol3+5tdXLKSYcZZwq3vCMXzlgF1TQ4MiHyYmCfygf9vyPkFNk66PAkv0hjk4NerVcLMlA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\MyBffProject.csproj",
+  "projectFilePath": "C:\\Users\\bruno.silva18\\Desktop\\MatchGame\\BFF_GameMatch.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno.silva18\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\bruno.silva18\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
