@@ -1,148 +1,238 @@
+/* ======= Estrutura Geral ======= */
 body {
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  min-height: 100vh;
   margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  color: #333;
 }
 
-.profile-container {
-  background: #fff;
-  margin: 20px auto;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 400px;   
+/* ======= Container Lateral ======= */
+.sidebar {
+  width: 220px;
+  background: #1e73be;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0 20px 20px 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar h3 {
+  margin-bottom: 25px;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.6rem;
+.sidebar ul li {
+  width: 100%;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ======= Conteúdo Principal ======= */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* ======= Cabeçalho do Perfil ======= */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
 }
 
 .profile-photo {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  margin-bottom: 20px;
-}
-
-.profile-photo img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #ddd;
-  transition: 0.3s;
+  border: 4px solid #1e73be;
+  box-shadow: 0 0 12px rgba(30, 115, 190, 0.4);
 }
 
-.photo-buttons {
+.profile-header h2 {
+  font-size: 28px;
+  color: #1e73be;
+  margin: 0;
+}
+
+/* ======= Cards de Estatísticas ======= */
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h4 {
+  color: #1e73be;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ======= Gráfico de Evolução ======= */
+.chart-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.chart-container h3 {
+  text-align: center;
+  color: #1e73be;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* ======= Formulário de Informações ======= */
+.profile-form {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.profile-form input:focus {
+  border-color: #1e73be;
+  box-shadow: 0 0 5px rgba(30,115,190,0.4);
+}
+
+.profile-form .buttons {
   display: flex;
   gap: 10px;
-  justify-content: center; 
-  flex-wrap: wrap; 
   margin-top: 10px;
 }
 
-.photo-buttons button {
-  padding: 8px 14px;
+.profile-form button {
+  padding: 12px;
+  border-radius: 8px;
   border: none;
-  border-radius: 8px;
-  background: #4f46e5;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  font-size: 0.9rem;
-}
-
-.photo-buttons button:hover {
-  background: #3730a3;
-  transform: scale(1.05);
-}
-
-form label {
-  display: block;
-  margin: 10px 0 5px;
   font-weight: bold;
-  font-size: 0.9rem;
-}
-
-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-form input:focus {
-  border-color: #4f46e5;
-  outline: none;
-  box-shadow: 0 0 4px rgba(79, 70, 229, 0.4);
+.profile-form button#editBtn {
+  background: #1e73be;
+  color: white;
 }
 
-form input:disabled {
-  background: #f9f9f9;
-  color: #777;
-  cursor: not-allowed;
+.profile-form button#editBtn:hover {
+  background: #155b91;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  flex-wrap: wrap; /* adapta no mobile */
+.profile-form button#saveBtn {
+  background: #28a745;
+  color: white;
 }
 
-.buttons button {
-  flex: 1;
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  font-size: 1rem;
+.profile-form button#saveBtn:hover {
+  background: #218838;
 }
 
-#editBtn, #saveBtn {
-  background: #4f46e5;
-  color: #fff;
-}
-
-.buttons button:hover {
-  background: #3730a3;
-  transform: scale(1.05);
-}
-
-/* 📱 Responsividade */
-@media (max-width: 480px) {
+/* ======= Responsividade ======= */
+@media (max-width: 768px) {
   body {
-    padding: 20px;
+    flex-direction: column;
   }
 
-  .profile-container {
-    padding: 20px;
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 0;
+    padding: 15px 0;
   }
 
-  .profile-photo img {
-    width: 100px;
-    height: 100px;
+  .sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
   }
 
-  h1 {
-    font-size: 1.4rem;
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
   }
 
-  .photo-buttons button,
-  .buttons button {
-    font-size: 0.85rem;
-    padding: 8px 12px;
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-container,
+  .profile-form {
+    width: 90%;
+    margin: 0 auto 30px;
   }
 }
