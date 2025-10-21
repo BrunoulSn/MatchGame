@@ -14,23 +14,29 @@
         <input type="text" id="searchBar" placeholder="Pesquisar time...">
       </div>
     </nav>
+
+     <div class="header-actions">
+      <div class="dropdown">
+        <button class="dropdown-btn">Categoria ▾  </button>
+        <div class="dropdown-content">
+          <div class="category" data-category="all" data-color="#1e1e1e">🌐 Todos</div>
+          <div class="category" data-category="futebol" data-color="rgb(0, 62, 177)">⚽ Futebol</div>
+          <div class="category" data-category="basquete" data-color="rgb(255, 123, 0)">🏀 Basquete</div>
+          <div class="category" data-category="volei" data-color="#505050">🏐 Vôlei</div>
+          <div class="category" data-category="corrida" data-color="rgb(199, 29, 29)">🏃 Corrida</div>
+        </div>
+      </div>
+  </div>
+
     <ul class="nav-links">
         <li><a href="index.html">Início</a></li>
         <li><a href="MatchGame/pages/login.html">Sair</a></li>
     </ul>
+
   </header>
 
   <main>
     <section class="teams-section">
-      <!-- Categorias -->
-      <div id="categories" class="categories">
-        <div class="category-circle" id="category-circle-text" data-category="todos">Todos</div>
-        <div id="futebol" class="category-circle" data-category="futebol"  data-color="#1e90ff">⚽</div>
-        <div id="basquete" class="category-circle" data-category="basquete" data-color="#ff4500">🏀</div>
-        <div id="volei" class="category-circle" data-category="volei" data-color="#505050">🏐</div>
-        <div id="corrida" class="category-circle" data-category="corrida" data-color="#ff0000">🏃</div>
-      </div>
-
       <!-- Lista dos times -->
       <div id="teamsList" class="teams-grid"></div>
     </section>

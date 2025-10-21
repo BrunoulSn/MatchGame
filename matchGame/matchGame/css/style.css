@@ -8,8 +8,7 @@
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f4f6f9;
-  color: #333;
-  min-height: 100vh;
+  min-height: 100vh;  
   display: flex;
   flex-direction: column;
   transition: background-color 0.4s ease;
@@ -39,9 +38,60 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(75, 114, 150, 0.15);
   transition: background-color 0.4s ease;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background-color: #0b5291;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #2a2a2a;
+  min-width: 160px;
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.dropdown-content .category {
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+}
+
+.dropdown-content .category:hover {
+  background-color: #444;
+}
+
+.dropdown.open .dropdown-content {
+  display: block;
+}
+
+#search {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -81,7 +131,7 @@ main {
 }
 
 .teams-section{
-  margin-top: -20px;
+  margin-top: 15px;
 }
 
 
@@ -232,11 +282,12 @@ input::placeholder {
 
 .team-card {
   display: block;
-  background: #fff;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
   margin-bottom: 18px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 
@@ -254,7 +305,7 @@ input::placeholder {
 footer {
   text-align: center;
   padding: 20px;
-  background: #f0f2f5;
+  background: #1e73be;
   color: #ffffff;
   font-size: 0.9rem;
   margin-top: auto;
