@@ -9,10 +9,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add EF Core and repository
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+// Add EF Core with AppDbContext and SQL Server connection
+builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add repository
 builder.Services.AddScoped<ITeamRepository, TeamRepository>();
 
 var app = builder.Build();
@@ -27,4 +28,5 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();

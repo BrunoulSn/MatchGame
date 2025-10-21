@@ -9,6 +9,9 @@ namespace MyBffProject.Models
         public string Description { get; set; }
         public string SportType { get; set; }
         public User Owner { get; set; }
+        public List<User> Members { get; set; } = new List<User>();
+        public string Address { get; set; }
+        public string Photo { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

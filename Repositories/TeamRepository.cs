@@ -6,33 +6,39 @@ namespace MyBffProject.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AppDbContext _context;
 
-        public TeamRepository(ApplicationDbContext context)
+        public TeamRepository(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task<IEnumerable<Team>> GetAllTeamsAsync()
         {
-            return await _context.Teams.ToListAsync();
+            return await _context.Teams
+                .Include(t => t.Owner)           // Inclui o dono
+                //.Include(t => t.Members)      // Inclui membros, se existir no modelo
+                .ToListAsync();
         }
 
         public async Task<Team?> GetTeamByIdAsync(int id)
         {
-            return await _context.Teams.FindAsync(id);
+            return await _context.Teams
+                .Include(t => t.Owner)
+                //.Include(t => t.Members)
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task CreateTeamAsync(Team team)
         {
             _context.Teams.Add(team);
-            //await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateTeamAsync(Team team)
         {
             _context.Teams.Update(team);
-            //await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteTeamAsync(int id)
@@ -41,7 +47,7 @@ namespace MyBffProject.Repositories
             if (team != null)
             {
                 _context.Teams.Remove(team);
-                //await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
         }
     }
