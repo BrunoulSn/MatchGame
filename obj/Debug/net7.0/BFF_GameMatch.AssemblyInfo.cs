@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BFF_GameMatch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe29a3f83a2180d0873169e557193fb85b01fa90")]
 [assembly: System.Reflection.AssemblyProductAttribute("BFF_GameMatch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BFF_GameMatch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

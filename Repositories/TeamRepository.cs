@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyBffProject.Data;
 using MyBffProject.Models;
+using MyBffProject.Services.Results;
 
 namespace MyBffProject.Repositories
 {
@@ -49,6 +50,36 @@ namespace MyBffProject.Repositories
                 _context.Teams.Remove(team);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public Task<PagedResult<Team>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Team>> GetAllTeamsAsync(CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Team?> GetTeamByIdAsync(int id, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateTeamAsync(Team team, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateTeamAsync(Team team, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteTeamAsync(int id, CancellationToken ct)
+        {
+            throw new NotImplementedException();
         }
     }
 }

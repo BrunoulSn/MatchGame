@@ -1,13 +1,16 @@
 ﻿using MyBffProject.Models;
+using MyBffProject.Services.Results;
 
 namespace MyBffProject.Repositories
 {
     public interface ITeamRepository
     {
-        Task<IEnumerable<Team>> GetAllTeamsAsync();
-        Task<Team?> GetTeamByIdAsync(int id);
-        Task CreateTeamAsync(Team team);
-        Task UpdateTeamAsync(Team team);
-        Task DeleteTeamAsync(int id);
+        // Paginação executada no banco (eficiente)
+        Task<PagedResult<Team>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct);
+        Task<IEnumerable<Team>> GetAllTeamsAsync(CancellationToken ct);
+        Task<Team?> GetTeamByIdAsync(int id, CancellationToken ct);
+        Task CreateTeamAsync(Team team, CancellationToken ct);
+        Task UpdateTeamAsync(Team team, CancellationToken ct);
+        Task<bool> DeleteTeamAsync(int id, CancellationToken ct);
     }
 }

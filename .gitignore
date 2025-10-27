@@ -1,0 +1,21 @@
+
+# Build outputs
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Configurações locais
+*.local
+*.log
+
+# Pacotes do NuGet
+*.nupkg
+packages/
+
+# Outros arquivos temporários
+*.tmp
+*.cache

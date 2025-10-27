@@ -69,3 +69,15 @@ C:\Users\bruno.silva18\Desktop\MatchGame\obj\Debug\net7.0\refint\BFF_GameMatch.d
 C:\Users\bruno.silva18\Desktop\MatchGame\obj\Debug\net7.0\BFF_GameMatch.pdb
 C:\Users\bruno.silva18\Desktop\MatchGame\obj\Debug\net7.0\BFF_GameMatch.genruntimeconfig.cache
 C:\Users\bruno.silva18\Desktop\MatchGame\obj\Debug\net7.0\ref\BFF_GameMatch.dll
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.csproj.AssemblyReference.cache
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\rpswa.dswa.cache.json
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.AssemblyInfoInputs.cache
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.AssemblyInfo.cs
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.csproj.CoreCompileInputs.cache
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.MvcApplicationPartsAssemblyInfo.cs
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.MvcApplicationPartsAssemblyInfo.cache
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.sourcelink.json
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.dll
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\refint\BFF_GameMatch.dll
+D:\Projetos\MatchGame\MatchGame\obj\Debug\net7.0\BFF_GameMatch.pdb
