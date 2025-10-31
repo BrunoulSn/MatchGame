@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\sportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\sportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\positionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\positionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|f:\\abelfonseca\\\u00E1rea de trabalho\\gamematch-backend-clean\\src\\gamematch.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44444444-4444-4444-4444-444444444444}|src\\GameMatch.Api\\GameMatch.Api.csproj|solutionrelative:src\\gamematch.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\NotificationsController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:41:08.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GroupsController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\GroupsController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\GroupsController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\GroupsController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\GroupsController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAiwKYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:40:24.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PostController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\PostController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\PostController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\PostController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\PostController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:39:27.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PositionsController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\PositionsController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\PositionsController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\PositionsController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\PositionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:38:29.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SportsController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\SportsController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\SportsController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\SportsController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\SportsController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowDoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:38:17.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "src\\GameMatch.Api\\Controllers\\UsersController.cs",
+              "ToolTip": "F:\\AbelFonseca\\\u00C1rea de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "src\\GameMatch.Api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA2wDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T12:37:53.855Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
