@@ -1,36 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projetos\\MatchGame\\MatchGame\\BFF_GameMatch.csproj": {}
+    "F:\\AbelFonseca\\Área de Trabalho\\MatchGame\\BFF_GameMatch.csproj": {}
   },
   "projects": {
-    "D:\\Projetos\\MatchGame\\MatchGame\\BFF_GameMatch.csproj": {
+    "F:\\AbelFonseca\\Área de Trabalho\\MatchGame\\BFF_GameMatch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projetos\\MatchGame\\MatchGame\\BFF_GameMatch.csproj",
+        "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\MatchGame\\BFF_GameMatch.csproj",
         "projectName": "BFF_GameMatch",
-        "projectPath": "D:\\Projetos\\MatchGame\\MatchGame\\BFF_GameMatch.csproj",
-        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "D:\\Projetos\\MatchGame\\MatchGame\\obj\\",
+        "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\MatchGame\\BFF_GameMatch.csproj",
+        "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
+        "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\MatchGame\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -47,32 +47,24 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
-            "AutoMapper": {
+            "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[15.1.0, )"
+              "version": "[9.0.10, )"
             },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "Polly": {
               "target": "Package",
-              "version": "[12.0.1, )"
+              "version": "[8.4.2, )"
             },
-            "FluentValidation.AspNetCore": {
+            "Polly.Extensions.Http": {
               "target": "Package",
-              "version": "[11.3.1, )"
-            },
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[3.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -94,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
