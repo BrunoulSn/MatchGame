@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil de Usuário - Estilo Discord</title>
+  <link rel="stylesheet" href="/MatchGame/css/profile.css" />
+</head>
+<body>
+  <!-- ===== Sidebar ===== -->
+  <div class="sidebar">
+    <h2 class="logo">MatchGame</h2>
+    <ul class="sidebar-list">
+      <li class="sidebar-item active">Perfil</li>
+      <li class="sidebar-item active" id="logout-btn"><a href="/index.html">Sair</a></li>  
+    </ul>
+  </div>
+
+  <!-- ===== Perfil principal ===== -->
+  <div class="profile-container">
+    <div class="profile-header">
+      <!-- Avatar principal clicável -->
+      <img id="profile-avatar" class="profile-avatar">
+      <input type="file" id="avatar-input-main" hidden />
+
+      <div class="profile-info">
+        <h1 id="profile-name">Gustavo</h1>
+      </div>
+      
+      <button id="edit-btn" class="edit-btn">Editar Perfil</button>
+    </div>
+
+    <div class="profile-content">
+      <div class="info-box">
+        <h3>Email</h3>
+        <p id="email">gustavo@example.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal de edição ===== -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Editar Perfil</h2>
+        <span id="close-modal" class="close">&times;</span>
+      </div>
+
+      <form id="edit-form">
+        <!-- Upload de imagem do modal -->
+        <div class="image-upload">
+          <img id="preview-avatar" src="https://i.imgur.com/4ZQZ4nK.png" alt="" class="profile-avatar" title="Clique para alterar" />
+          <label for="avatar-input" class="upload-label">Escolher Imagem</label>
+          <input type="file" id="avatar-input" accept="image/*" hidden />
+        </div>    
+
+        <label>Nome:</label>
+        <input type="text" id="name-input" placeholder="Seu nome" required />
+
+        <label>Email:</label>
+        <input type="email" id="email-input" placeholder="exemplo@email.com" required />
+
+        <div class="modal-footer">
+          <button type="submit" class="save-btn">Salvar</button>
+        </div>
+      </form> 
+    </div>  
+  </div>
+
+  <script src="/MatchGame/js/profile.js"></script>
+</body>
+</html>
