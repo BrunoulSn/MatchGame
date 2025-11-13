@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iMDC1Hf4rag=",
+  "dgSpecHash": "bKTBoVY3iXONKr04OXw48Mv1zPF5qP+tqhxPXAp5+GM2P6CW/N67/L2g3XMzTx11W8c2uA1HxF+tUO4RPzJDsw==",
   "success": true,
-  "projectFilePath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+  "projectFilePath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

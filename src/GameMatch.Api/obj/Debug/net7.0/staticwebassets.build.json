@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "B4yaIuvLCwGa7Hp9Bd1YnfYY5nKkBViuDjXv+6E3VmA=",
+  "Source": "GameMatch.Api",
+  "BasePath": "_content/GameMatch.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

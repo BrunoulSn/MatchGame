@@ -1,8 +1,10 @@
-﻿// src/GameMatch.Api/Controllers/SportsController.cs
+﻿
 using GameMatch.Core.Models;
 using GameMatch.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using GameMatch.Api.DTOs;
+
 
 [ApiController]
 [Route("api/sports")]
@@ -24,36 +26,63 @@ public class SportsController : ControllerBase
         var sport = await _db.Sports
             .Include(s => s.Positions)
             .FirstOrDefaultAsync(s => s.Id == id);
+
         return sport is null ? NotFound() : Ok(sport);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] Sport sport)
+    public async Task<IActionResult> Create([FromBody] SportDto dto)
     {
+        var sport = new Sport
+        {
+            Name = dto.Name,
+            IconUrl = dto.IconUrl,
+            Description = dto.Description
+        };
+
         _db.Sports.Add(sport);
         await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = sport.Id }, sport);
+
+        return CreatedAtAction(nameof(Get), new { id = sport.Id }, new SportResponseDto
+        {
+            Id = sport.Id,
+            Name = sport.Name,
+            IconUrl = sport.IconUrl,
+            Description = sport.Description
+        });
+
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] Sport dto)
+    public async Task<IActionResult> Update(int id, [FromBody] SportUpdateDto dto)
     {
-        var s = await _db.Sports.FindAsync(id);
-        if (s is null) return NotFound();
-        s.Name = dto.Name;
-        s.IconUrl = dto.IconUrl;
-        s.Description = dto.Description;
+        var sport = await _db.Sports.FindAsync(id);
+        if (sport is null) return NotFound();
+
+        sport.Name = dto.Name;
+        sport.IconUrl = dto.IconUrl;
+        sport.Description = dto.Description;
+
         await _db.SaveChangesAsync();
-        return NoContent();
+        return Ok(new SportResponseDto
+        {
+            Id = sport.Id,
+            Name = sport.Name,
+            IconUrl = sport.IconUrl,
+            Description = sport.Description
+        });
+
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var s = await _db.Sports.FindAsync(id);
-        if (s is null) return NotFound();
-        _db.Sports.Remove(s);
+        var sport = await _db.Sports.FindAsync(id);
+        if (sport is null) return NotFound();
+
+        _db.Sports.Remove(sport);
         await _db.SaveChangesAsync();
+
         return NoContent();
     }
 }

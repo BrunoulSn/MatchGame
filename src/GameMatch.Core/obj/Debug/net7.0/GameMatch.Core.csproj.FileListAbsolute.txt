@@ -1,0 +1,12 @@
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.deps.json
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.dll
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.pdb
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.csproj.AssemblyReference.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.AssemblyInfoInputs.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.AssemblyInfo.cs
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.csproj.CoreCompileInputs.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.dll
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\refint\GameMatch.Core.dll
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.pdb
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\ref\GameMatch.Core.dll

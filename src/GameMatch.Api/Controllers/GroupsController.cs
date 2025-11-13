@@ -3,6 +3,7 @@ using GameMatch.Core.Models;
 using GameMatch.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using GameMatch.Api.DTOs;
 
 [ApiController]
 [Route("api/groups")]
@@ -79,42 +80,64 @@ public class GroupsController : ControllerBase
 
     // RF08: entrar em patota (com posição opcional)
     public record JoinDto(int UserId, int? PositionId);
-    [HttpPost("{id:int}/join")]
+
+    [HttpPost("{id:int}/addMembro")]
     public async Task<IActionResult> Join(int id, [FromBody] JoinDto dto)
     {
         var g = await _db.Groups
             .Include(x => x.Members)
             .Include(x => x.Positions)
             .FirstOrDefaultAsync(x => x.Id == id);
-        if (g is null) return NotFound();
 
-        if (g.Members.Count >= g.MaxMembers) return BadRequest("Grupo cheio");
+        if (g is null)
+            return NotFound();
+
+        if (g.Members.Count >= g.MaxMembers)
+            return BadRequest("Grupo cheio");
 
         if (dto.PositionId.HasValue)
         {
             var gp = g.Positions.FirstOrDefault(x => x.PositionId == dto.PositionId.Value);
-            if (gp is null) return BadRequest("Posição não configurada no grupo");
+            if (gp is null)
+                return BadRequest("Posição não configurada no grupo");
+
             var ocupados = g.Members.Count(m => m.PositionId == gp.PositionId);
-            if (ocupados >= gp.OpenSpots) return BadRequest("Sem vagas nessa posição");
+            if (ocupados >= gp.OpenSpots)
+                return BadRequest("Sem vagas nessa posição");
         }
 
         var exists = g.Members.Any(m => m.UserId == dto.UserId);
-        if (exists) return BadRequest("Usuário já está no grupo");
+        if (exists)
+            return BadRequest("Usuário já está no grupo");
 
         _db.GroupMembers.Add(new GroupMember
         {
             GroupId = id,
             UserId = dto.UserId,
             PositionId = dto.PositionId ?? 0,
-            Role = GroupRole.Member
+            Role = MemberRole.Member
         });
+
         await _db.SaveChangesAsync();
-        return Ok();
+
+        var resp = new GroupResponseDto
+        {
+            Id = g.Id,
+            Name = g.Name,
+            Description = g.Description,
+            SportId = g.SportId,
+            MaxMembers = g.MaxMembers,
+            OwnerId = g.OwnerId,
+            CreatedAt = g.CreatedAt
+        };
+
+        return Ok(resp);
     }
+
 
     // RF09: remover membro (criador ou moderador)
     public record KickDto(int ActorId, int MemberUserId);
-    [HttpPost("{id:int}/kick")]
+    [HttpPost("{id:int}/remMembro")]
     public async Task<IActionResult> Kick(int id, [FromBody] KickDto dto)
     {
         var g = await _db.Groups
@@ -123,7 +146,7 @@ public class GroupsController : ControllerBase
         if (g is null) return NotFound();
 
         var actor = g.Members.FirstOrDefault(m => m.UserId == dto.ActorId);
-        if (actor is null || (g.OwnerId != dto.ActorId && actor.Role != GroupRole.Moderator))
+        if (actor is null || (g.OwnerId != dto.ActorId && actor.Role != MemberRole.Moderator))
             return Forbid();
 
         var victim = g.Members.FirstOrDefault(m => m.UserId == dto.MemberUserId);
@@ -137,7 +160,7 @@ public class GroupsController : ControllerBase
     // RF12: reorganizar membros (drag & drop → mudar PositionId)
     public record ReorderItem(int UserId, int? PositionId);
     public record ReorderDto(List<ReorderItem> Items);
-    [HttpPost("{id:int}/reorder")]
+    [HttpPost("{id:int}/reagrupar")]
     public async Task<IActionResult> Reorder(int id, [FromBody] ReorderDto dto)
     {
         var g = await _db.Groups

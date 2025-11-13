@@ -1,45 +1,45 @@
 {
   "format": 1,
   "restore": {
-    "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\GameMatch.Api.csproj": {}
+    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Api\\GameMatch.Api.csproj": {}
   },
   "projects": {
-    "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\GameMatch.Api.csproj": {
+    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Api\\GameMatch.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\GameMatch.Api.csproj",
+        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Api\\GameMatch.Api.csproj",
         "projectName": "GameMatch.Api",
-        "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\GameMatch.Api.csproj",
-        "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
-        "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Api\\obj\\",
+        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Api\\GameMatch.Api.csproj",
+        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj"
               },
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
               },
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\GameMatch.Services.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj"
               }
             }
           }
@@ -48,31 +48,25 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[7.0.20, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[7.0.20, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -94,37 +88,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
         "projectName": "GameMatch.Core",
-        "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj",
-        "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
-        "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\obj\\",
+        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -132,17 +126,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "imports": [
             "net461",
             "net462",
@@ -159,40 +147,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
+    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
         "projectName": "GameMatch.Infrastructure",
-        "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
-        "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj"
               }
             }
           }
@@ -201,31 +189,25 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[7.0.20, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[7.0.20, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -244,43 +226,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
+    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\GameMatch.Services.csproj",
+        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj",
         "projectName": "GameMatch.Services",
-        "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\GameMatch.Services.csproj",
-        "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
-        "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Services\\obj\\",
+        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj",
+        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Core\\GameMatch.Core.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj"
               },
-              "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
-                "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\gamematch-backend-clean\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
+              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
               }
             }
           }
@@ -289,17 +271,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -307,15 +283,15 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[7.0.20, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[8.14.0, )"
+              "version": "[7.5.1, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[8.14.0, )"
+              "version": "[7.5.1, )"
             }
           },
           "imports": [
@@ -334,7 +310,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

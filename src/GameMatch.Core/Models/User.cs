@@ -8,6 +8,6 @@ public class User
     public string PasswordHash { get; set; } = default!;
     public string? Phone { get; set; }
     public DateOnly? BirthDate { get; set; }
-    public string? Skills { get; set; } // texto livre
+    public string? Skills { get; set; } 
     public string? Availability { get; set; }
 }
