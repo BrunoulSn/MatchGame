@@ -1,10 +1,3 @@
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.csproj.AssemblyReference.cache
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.AssemblyInfoInputs.cache
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.AssemblyInfo.cs
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.csproj.CoreCompileInputs.cache
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\appsettings.json
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\GameMatch.Api.exe
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\GameMatch.Api.deps.json
@@ -40,6 +33,13 @@ C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\G
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\GameMatch.Core.pdb
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\GameMatch.Infrastructure.pdb
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\bin\Debug\net7.0\GameMatch.Services.pdb
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.csproj.AssemblyReference.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.AssemblyInfoInputs.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.AssemblyInfo.cs
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.csproj.CoreCompileInputs.cache
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\GameMatch.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\staticwebassets\msbuild.GameMatch.Api.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.GameMatch.Api.props
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.GameMatch.Api.props

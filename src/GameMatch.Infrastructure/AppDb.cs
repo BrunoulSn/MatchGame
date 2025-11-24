@@ -14,9 +14,7 @@ public class AppDb : DbContext
     public DbSet<GroupPosition> GroupPositions => Set<GroupPosition>();
     public DbSet<GroupMember> GroupMembers => Set<GroupMember>();
     public DbSet<Event> Events => Set<Event>();
-    public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<Sport> Sports => Set<Sport>();
-    public DbSet<Post> Posts { get; set; } = null!;
 
 
 

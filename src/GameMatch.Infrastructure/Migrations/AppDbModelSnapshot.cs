@@ -143,39 +143,6 @@ namespace GameMatch.Infrastructure.Migrations
                     b.ToTable("GroupPositions");
                 });
 
-            modelBuilder.Entity("GameMatch.Core.Models.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("Read")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Notifications");
-                });
-
             modelBuilder.Entity("GameMatch.Core.Models.Position", b =>
                 {
                     b.Property<int>("Id")
@@ -197,32 +164,6 @@ namespace GameMatch.Infrastructure.Migrations
                     b.HasIndex("SportId");
 
                     b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Caption")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("GameMatch.Core.Models.Sport", b =>
@@ -350,17 +291,6 @@ namespace GameMatch.Infrastructure.Migrations
                     b.Navigation("Position");
                 });
 
-            modelBuilder.Entity("GameMatch.Core.Models.Notification", b =>
-                {
-                    b.HasOne("GameMatch.Core.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("GameMatch.Core.Models.Position", b =>
                 {
                     b.HasOne("GameMatch.Core.Models.Sport", "Sport")
@@ -370,17 +300,6 @@ namespace GameMatch.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Sport");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Post", b =>
-                {
-                    b.HasOne("GameMatch.Core.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
