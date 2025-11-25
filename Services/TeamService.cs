@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
-using BFF_GameMatch.Models;
-using BFF_GameMatch.Services.Dtos.Team;
 using MyBffProject.Models;
 using MyBffProject.Repositories;
 using MyBffProject.Services.Results;
+using System.Threading;
+using BFF_GameMatch.Models;
+using System.Threading.Tasks;
+using System;
 
 namespace MyBffProject.Services
 {
@@ -33,7 +35,7 @@ namespace MyBffProject.Services
             team.CreatedAt = DateTime.UtcNow;
             if (!string.IsNullOrEmpty(ownerUserId))
             {
-                team.Owner = new User { Id = ownerUserId }; // ajustar se precisar buscar full user
+                team.Owner = new User { Id = ownerUserId };
             }
             await _repo.CreateTeamAsync(team, ct);
             return team;
@@ -54,35 +56,5 @@ namespace MyBffProject.Services
         }
 
         public Task<bool> DeleteAsync(int id, CancellationToken ct) => _repo.DeleteTeamAsync(id, ct);
-
-        public Task<bool> UpdateAsync(TeamDto input, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CreateAsync(TeamDto input, string? userId, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateAsync(Services.Dtos.TeamUpdateDto input, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CreateAsync(Services.Dtos.TeamCreateDto input, string? userId, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateAsync(Services.Dtos.TeamUpdateDto input, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CreateAsync(Services.Dtos.TeamCreateDto input, string? userId, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

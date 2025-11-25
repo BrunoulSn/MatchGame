@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using MyBffProject.Data;
 using MyBffProject.Models;
 using MyBffProject.Services.Results;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MyBffProject.Repositories
 {
@@ -24,7 +28,8 @@ namespace MyBffProject.Repositories
 
             if (!string.IsNullOrWhiteSpace(q))
             {
-                query = query.Where(t => EF.Functions.Like(t.Name, $"%{q}%"));
+                var term = q.Trim();
+                query = query.Where(t => t.Name != null && t.Name.Contains(term));
             }
 
             var total = await query.LongCountAsync(ct).ConfigureAwait(false);

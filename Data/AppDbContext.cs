@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using BFF_GameMatch.Models;
+﻿using BFF_GameMatch.Models;
 using Microsoft.EntityFrameworkCore;
 using MyBffProject.Models;
+using System;
+using System.Collections.Generic;
 
 namespace MyBffProject.Data
 {
@@ -22,14 +23,15 @@ namespace MyBffProject.Data
             modelBuilder.Entity<Team>(b =>
             {
                 b.HasKey(t => t.Id);
+                b.Property(t => t.Id).ValueGeneratedOnAdd();
                 b.Property(t => t.Name).IsRequired().HasMaxLength(150);
                 b.Property(t => t.Description).HasMaxLength(2000);
                 b.Property(t => t.SportType).HasMaxLength(100);
                 b.Property(t => t.Photo).HasMaxLength(500);
-                b.Property<DateTime>("CreatedAt").HasDefaultValueSql("GETUTCDATE()");
+                b.Property(t => t.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
 
                 // Owner: FK shadow property OwnerId (pode ser null)
-                b.HasOne<User>()
+                b.HasOne(t => t.Owner)
                  .WithMany()
                  .HasForeignKey("OwnerId")
                  .OnDelete(DeleteBehavior.SetNull);
@@ -47,12 +49,12 @@ namespace MyBffProject.Data
             modelBuilder.Entity<User>(b =>
             {
                 b.HasKey(u => u.Id);
-                b.Property(u => u.Id).IsRequired();
+                b.Property(u => u.Id).ValueGeneratedOnAdd();
                 b.Property(u => u.Name).HasMaxLength(150);
                 b.Property(u => u.Email).HasMaxLength(200);
                 b.Property(u => u.CPF).HasMaxLength(20);
                 b.Property(u => u.Phone).HasMaxLength(50);
-                // Não mapear Password para APIs (permanece no model, mas trate com cuidado)
+                // Não mapear Password para APIs — trate via DTOs quando expor dados
             });
         }
     }

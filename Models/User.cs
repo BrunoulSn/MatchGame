@@ -1,19 +1,19 @@
-﻿using MyBffProject.Models;
+﻿using System.Collections.Generic;
 
-namespace BFF_GameMatch.Models
+namespace MyBffProject.Models
 {
     public class User
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string CPF { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        //public List<Sports> FavoriteSports { get; set; }
-        public List<Team> Teams { get; set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? CPF { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
 
-        public List<User> Friends { get; set; }
+        // Password mantido no model, trate com cuidado (não expor em DTOs)
+        public string? Password { get; set; }
 
+        // Times que o usuário participa (many-to-many)
+        public List<Team> Teams { get; set; } = new();
     }
 }

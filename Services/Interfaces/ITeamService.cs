@@ -1,5 +1,6 @@
 using MyBffProject.Models;
 using MyBffProject.Services.Results;
+using System.Threading;
 
 namespace MyBffProject.Services
 {
@@ -10,7 +11,5 @@ namespace MyBffProject.Services
         Task<Team> CreateAsync(TeamCreateDto input, string? ownerUserId, CancellationToken ct);
         Task<bool> UpdateAsync(TeamUpdateDto input, CancellationToken ct);
         Task<bool> DeleteAsync(int id, CancellationToken ct);
-        Task<bool> UpdateAsync(Services.Dtos.TeamUpdateDto input, CancellationToken cancellationToken);
-        Task CreateAsync(Services.Dtos.TeamCreateDto input, string? userId, CancellationToken cancellationToken);
     }
 }

@@ -19,3 +19,5 @@ packages/
 # Outros arquivos temporários
 *.tmp
 *.cache
+
+.git
