@@ -1,8 +1,5 @@
-﻿using BFF_GameMatch.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyBffProject.Models;
-using System;
-using System.Collections.Generic;
 
 namespace MyBffProject.Data
 {

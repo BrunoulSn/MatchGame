@@ -1,10 +1,7 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using BFF_GameMatch.Models;
 using BFF_GameMatch.Services.Dtos.Team;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MyBffProject.Services;
 using MyBffProject.Services.Results;
 

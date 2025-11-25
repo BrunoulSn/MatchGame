@@ -13,6 +13,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using MyBffProject.Authentication;
 using Microsoft.Extensions.Logging;
+using BFF_GameMatch.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

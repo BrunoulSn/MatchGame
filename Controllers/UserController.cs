@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using BFF_GameMatch.Models;
+﻿using AutoMapper;
 using BFF_GameMatch.Services.Dtos.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using MyBffProject.Models;
 using MyBffProject.Services;
 using MyBffProject.Services.Results;
+
 
 namespace MyBffProject.Controllers
 {
@@ -88,7 +83,8 @@ namespace MyBffProject.Controllers
         public async Task<IActionResult> Update(string id, [FromBody] UserUpdateDto input, CancellationToken cancellationToken = default)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
-            if (id != input.Id) return BadRequest("ID mismatch");
+            if (input.Id != int.Parse(id))
+                return BadRequest("ID mismatch");
 
             var updated = await _userService.UpdateAsync(input, cancellationToken);
             if (!updated) return NotFound();

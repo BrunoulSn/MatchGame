@@ -5,8 +5,11 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using BFF_GameMatch.Services.Dtos.Team;
 using Microsoft.Extensions.Logging;
 using MyBffProject.Services.Dtos.Backend;
+using BFF_GameMatch.Services.Dtos.User;
+
 
 namespace MyBffProject.Services
 {
@@ -70,26 +73,26 @@ namespace MyBffProject.Services
         }
 
         // Groups
-        public async Task<List<GroupDto>> GetGroupsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<BackGroupDto>> GetGroupsAsync(CancellationToken cancellationToken = default)
         {
             var resp = await Client().GetAsync("api/groups", cancellationToken);
-            return await ReadAsJsonAsync<List<GroupDto>>(resp, cancellationToken) ?? new List<GroupDto>();
+            return await ReadAsJsonAsync<List<BackGroupDto>>(resp, cancellationToken) ?? new List<BackGroupDto>();
         }
 
-        public async Task<GroupDto?> GetGroupAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<BackGroupDto?> GetGroupAsync(int id, CancellationToken cancellationToken = default)
         {
             var resp = await Client().GetAsync($"api/groups/{id}", cancellationToken);
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound) return null;
-            return await ReadAsJsonAsync<GroupDto>(resp, cancellationToken);
+            return await ReadAsJsonAsync<BackGroupDto>(resp, cancellationToken);
         }
 
-        public async Task<GroupDto> CreateGroupAsync(GroupCreateDto dto, CancellationToken cancellationToken = default)
+        public async Task<BackGroupDto> CreateGroupAsync(BackGroupCreateDto dto, CancellationToken cancellationToken = default)
         {
             var resp = await Client().PostAsJsonAsync("api/groups", dto, _jsonOptions, cancellationToken);
-            return await ReadAsJsonAsync<GroupDto>(resp, cancellationToken) ?? throw new InvalidOperationException("No response body");
+            return await ReadAsJsonAsync<BackGroupDto>(resp, cancellationToken) ?? throw new InvalidOperationException("No response body");
         }
 
-        public async Task UpdateGroupAsync(int id, GroupUpdateDto dto, CancellationToken cancellationToken = default)
+        public async Task UpdateGroupAsync(int id, BackGroupUpdateDto dto, CancellationToken cancellationToken = default)
         {
             var resp = await Client().PutAsJsonAsync($"api/groups/{id}", dto, _jsonOptions, cancellationToken);
             resp.EnsureSuccessStatusCode();
@@ -101,22 +104,32 @@ namespace MyBffProject.Services
             resp.EnsureSuccessStatusCode();
         }
 
-        public async Task<GroupResponseDto> JoinGroupAsync(int id, JoinDto dto, CancellationToken cancellationToken = default)
+        public async Task<BackGroupResponseDto> JoinGroupAsync(int id, BackJoinDto dto, CancellationToken cancellationToken = default)
         {
             var resp = await Client().PostAsJsonAsync($"api/groups/{id}/addMembro", dto, _jsonOptions, cancellationToken);
-            return await ReadAsJsonAsync<GroupResponseDto>(resp, cancellationToken) ?? throw new InvalidOperationException("No response body");
+            return await ReadAsJsonAsync<BackGroupResponseDto>(resp, cancellationToken) ?? throw new InvalidOperationException("No response body");
         }
 
-        public async Task KickMemberAsync(int id, KickDto dto, CancellationToken cancellationToken = default)
+        public async Task KickMemberAsync(int id, BackKickDto dto, CancellationToken cancellationToken = default)
         {
             var resp = await Client().PostAsJsonAsync($"api/groups/{id}/remMembro", dto, _jsonOptions, cancellationToken);
             resp.EnsureSuccessStatusCode();
         }
 
-        public async Task ReorderGroupAsync(int id, ReorderDto dto, CancellationToken cancellationToken = default)
+        public async Task ReorderGroupAsync(int id, BackReorderItem dto, CancellationToken cancellationToken = default)
         {
             var resp = await Client().PostAsJsonAsync($"api/groups/{id}/reagrupar", dto, _jsonOptions, cancellationToken);
             resp.EnsureSuccessStatusCode();
+        }
+
+        public Task UpdateGroupAsync(int id, TeamUpdateDto dto, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateGroupAsync(CreateGroupRequest dto, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

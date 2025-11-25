@@ -1,3 +1,4 @@
+using BFF_GameMatch.Services.Dtos.User;
 using System.ComponentModel.DataAnnotations;
 
 namespace BFF_GameMatch.Services.Dtos.Team

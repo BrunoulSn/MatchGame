@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame\\BFF_GameMatch.csproj": {}
+    "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame\\BFF_GameMatch.csproj": {
+    "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame\\BFF_GameMatch.csproj",
+        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj",
         "projectName": "BFF_GameMatch",
-        "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame\\BFF_GameMatch.csproj",
-        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame\\obj\\",
+        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj",
+        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,13 +38,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net7.0": {
@@ -66,6 +60,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[7.0.10, )"
@@ -74,21 +72,21 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
-            "Serilog": {
-              "target": "Package",
-              "version": "[4.3.0, )"
-            },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[7.0.0, )"
             },
             "Serilog.Settings.Configuration": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[7.0.0, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
-              "version": "[6.1.1, )"
+              "version": "[4.1.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -114,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

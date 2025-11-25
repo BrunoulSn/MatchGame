@@ -1,8 +1,4 @@
-﻿using BFF_GameMatch.Models;
-using System;
-using System.Collections.Generic;
-
-namespace MyBffProject.Models
+﻿namespace MyBffProject.Models
 {
     public class Team
     {

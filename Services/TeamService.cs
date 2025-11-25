@@ -2,12 +2,9 @@
 using MyBffProject.Models;
 using MyBffProject.Repositories;
 using MyBffProject.Services.Results;
-using System.Threading;
-using BFF_GameMatch.Models;
-using System.Threading.Tasks;
-using System;
+using MyBffProject.Services;
 
-namespace MyBffProject.Services
+namespace BFF_GameMatch.Services
 {
     public class TeamService : ITeamService
     {
@@ -22,7 +19,6 @@ namespace MyBffProject.Services
 
         public Task<PagedResult<Team>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct)
         {
-            // delega para o repositório que executará paginação no banco
             return _repo.GetPagedAsync(page, pageSize, q, ct);
         }
 
@@ -33,10 +29,13 @@ namespace MyBffProject.Services
         {
             var team = _mapper.Map<Team>(input);
             team.CreatedAt = DateTime.UtcNow;
-            if (!string.IsNullOrEmpty(ownerUserId))
+
+            // garante compatibilidade: ownerUserId vem como string (ex: GUID ou Id numérico em texto)
+            if (!string.IsNullOrEmpty(ownerUserId) && int.TryParse(ownerUserId, out var ownerId))
             {
-                team.Owner = new User { Id = ownerUserId };
+                team.OwnerId = ownerId;
             }
+
             await _repo.CreateTeamAsync(team, ct);
             return team;
         }
@@ -45,16 +44,18 @@ namespace MyBffProject.Services
         {
             var existing = await _repo.GetTeamByIdAsync(input.Id, ct);
             if (existing == null) return false;
-            // mapear apenas campos permitidos
+
             existing.Name = input.Name;
             existing.Description = input.Description;
             existing.SportType = input.SportType;
             existing.Address = input.Address;
             existing.Photo = input.Photo;
+
             await _repo.UpdateTeamAsync(existing, ct);
             return true;
         }
 
-        public Task<bool> DeleteAsync(int id, CancellationToken ct) => _repo.DeleteTeamAsync(id, ct);
+        public Task<bool> DeleteAsync(int id, CancellationToken ct) =>
+            _repo.DeleteTeamAsync(id, ct);
     }
 }

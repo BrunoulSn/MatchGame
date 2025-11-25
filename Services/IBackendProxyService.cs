@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using BFF_GameMatch.Services.Dtos.Team;
 using MyBffProject.Services.Dtos.Backend;
+using BFF_GameMatch.Services.Dtos.User;
+
 
 namespace MyBffProject.Services
 {
@@ -15,14 +18,16 @@ namespace MyBffProject.Services
         Task DeleteUserAsync(int id, CancellationToken cancellationToken = default);
 
         // Groups
-        Task<List<GroupDto>> GetGroupsAsync(CancellationToken cancellationToken = default);
-        Task<GroupDto?> GetGroupAsync(int id, CancellationToken cancellationToken = default);
-        Task<GroupDto> CreateGroupAsync(GroupCreateDto dto, CancellationToken cancellationToken = default);
-        Task UpdateGroupAsync(int id, GroupUpdateDto dto, CancellationToken cancellationToken = default);
+        Task<List<BackGroupDto>> GetGroupsAsync(CancellationToken cancellationToken = default);
+        Task<BackGroupDto?> GetGroupAsync(int id, CancellationToken cancellationToken = default);
+        Task<BackGroupDto> CreateGroupAsync(BackGroupCreateDto dto, CancellationToken cancellationToken = default);
+        Task UpdateGroupAsync(int id, BackGroupUpdateDto dto, CancellationToken cancellationToken = default);
         Task DeleteGroupAsync(int id, CancellationToken cancellationToken = default);
 
-        Task<GroupResponseDto> JoinGroupAsync(int id, JoinDto dto, CancellationToken cancellationToken = default);
-        Task KickMemberAsync(int id, KickDto dto, CancellationToken cancellationToken = default);
-        Task ReorderGroupAsync(int id, ReorderDto dto, CancellationToken cancellationToken = default);
+        Task<BackGroupResponseDto> JoinGroupAsync(int id, BackJoinDto dto, CancellationToken cancellationToken = default);
+        Task KickMemberAsync(int id, BackKickDto dto, CancellationToken cancellationToken = default);
+        Task ReorderGroupAsync(int id, BackReorderItem dto, CancellationToken cancellationToken = default);
+        Task UpdateGroupAsync(int id, TeamUpdateDto dto, CancellationToken cancellationToken);
+        Task CreateGroupAsync(CreateGroupRequest dto, CancellationToken cancellationToken);
     }
 }

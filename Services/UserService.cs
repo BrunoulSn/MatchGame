@@ -1,14 +1,11 @@
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using BFF_GameMatch.Models;
-using MyBffProject.Data;
-using MyBffProject.Services.Results;
 using Microsoft.EntityFrameworkCore;
 using BFF_GameMatch.Services.Dtos.User;
+using MyBffProject.Data;
+using MyBffProject.Models;
+using MyBffProject.Services.Results;
+using MyBffProject.Services;
 
-namespace MyBffProject.Services
+namespace BFF_GameMatch.Services
 {
     public class UserService : IUserService
     {
@@ -19,26 +16,35 @@ namespace MyBffProject.Services
             _db = db;
         }
 
-        public async Task<PagedResult<User>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct)
+        public async Task<PagedResult<UserDto>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct)
         {
-            var query = _db.Users.AsNoTracking().AsQueryable();
+            var query = _db.Users.AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(q))
             {
                 var term = q.Trim();
-                query = query.Where(u => (u.Name != null && u.Name.Contains(term)) || (u.Email != null && u.Email.Contains(term)));
+                query = query.Where(u =>
+                    (u.Name != null && u.Name.Contains(term)) ||
+                    (u.Email != null && u.Email.Contains(term)));
             }
 
-            var total = await query.LongCountAsync(ct).ConfigureAwait(false);
-
-            var items = await query
+            var total = await query.CountAsync(ct);
+            var users = await query
                 .OrderBy(u => u.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync(ct)
-                .ConfigureAwait(false);
+                .ToListAsync(ct);
 
-            return new PagedResult<User>
+            var items = users.Select(u => new UserDto
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Email = u.Email,
+                CPF = u.CPF,
+                Phone = u.Phone
+            });
+
+            return new PagedResult<UserDto>
             {
                 Items = items,
                 TotalCount = total,
@@ -47,17 +53,27 @@ namespace MyBffProject.Services
             };
         }
 
-        public async Task<User?> GetByIdAsync(string id, CancellationToken ct)
+        public async Task<UserDto?> GetByIdAsync(int id, CancellationToken ct)
         {
-            if (string.IsNullOrEmpty(id)) return null;
-            return await _db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id, ct).ConfigureAwait(false);
+            var user = await _db.Users.AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == id, ct);
+
+            return user == null
+                ? null
+                : new UserDto
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Email = user.Email,
+                    CPF = user.CPF,
+                    Phone = user.Phone
+                };
         }
 
-        public async Task<User> CreateAsync(UserCreateDto input, CancellationToken ct)
+        public async Task<UserDto> CreateAsync(UserCreateDto input, CancellationToken ct)
         {
             var user = new User
             {
-                Id = string.IsNullOrWhiteSpace(input.Id) ? Guid.NewGuid().ToString() : input.Id,
                 Name = input.Name,
                 CPF = input.CPF,
                 Phone = input.Phone,
@@ -65,33 +81,53 @@ namespace MyBffProject.Services
                 Password = input.Password
             };
 
-            await _db.Users.AddAsync(user, ct).ConfigureAwait(false);
-            await _db.SaveChangesAsync(ct).ConfigureAwait(false);
-            return user;
+            await _db.Users.AddAsync(user, ct);
+            await _db.SaveChangesAsync(ct);
+
+            return new UserDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                CPF = user.CPF,
+                Phone = user.Phone
+            };
         }
 
         public async Task<bool> UpdateAsync(UserUpdateDto input, CancellationToken ct)
         {
-            var existing = await _db.Users.FirstOrDefaultAsync(u => u.Id == input.Id, ct).ConfigureAwait(false);
+            var existing = await _db.Users.FirstOrDefaultAsync(u => u.Id == input.Id, ct);
             if (existing == null) return false;
 
             existing.Name = input.Name ?? existing.Name;
             existing.Phone = input.Phone ?? existing.Phone;
             existing.Email = input.Email ?? existing.Email;
-            if (!string.IsNullOrEmpty(input.Password)) existing.Password = input.Password;
+            if (!string.IsNullOrEmpty(input.Password))
+                existing.Password = input.Password;
 
             _db.Users.Update(existing);
-            await _db.SaveChangesAsync(ct).ConfigureAwait(false);
+            await _db.SaveChangesAsync(ct);
             return true;
         }
 
-        public async Task<bool> DeleteAsync(string id, CancellationToken ct)
+        public async Task<bool> DeleteAsync(int id, CancellationToken ct)
         {
-            var existing = await _db.Users.FindAsync(new object[] { id }, ct).ConfigureAwait(false);
+            var existing = await _db.Users.FindAsync(new object[] { id }, ct);
             if (existing == null) return false;
+
             _db.Users.Remove(existing);
-            await _db.SaveChangesAsync(ct).ConfigureAwait(false);
+            await _db.SaveChangesAsync(ct);
             return true;
+        }
+
+        public Task<UserDto?> GetByIdAsync(string id, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync(string id, CancellationToken ct)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,8 +1,9 @@
 using AutoMapper;
-using BFF_GameMatch.Models;
 using BFF_GameMatch.Services.Dtos.Team;
 using MyBffProject.Models;
 using MyBffProject.Services.Results;
+using BFF_GameMatch.Services.Dtos.User;
+
 
 namespace MyBffProject.Mapping
 {
