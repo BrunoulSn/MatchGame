@@ -10,3 +10,15 @@ C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\refint\GameMatch.Core.dll
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.pdb
 C:\Users\abel.fonseca\Desktop\MatchGameBack\src\GameMatch.Core\obj\Debug\net7.0\ref\GameMatch.Core.dll
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.deps.json
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.dll
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\bin\Debug\net7.0\GameMatch.Core.pdb
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.AssemblyInfoInputs.cache
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.AssemblyInfo.cs
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.csproj.CoreCompileInputs.cache
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.sourcelink.json
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.dll
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\refint\GameMatch.Core.dll
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\GameMatch.Core.pdb
+C:\Users\bruno\Documents\Senac\MatchGame-Backend\MatchGame\src\GameMatch.Core\obj\Debug\net7.0\ref\GameMatch.Core.dll

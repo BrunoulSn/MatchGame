@@ -232,7 +232,10 @@
       },
       "GameMatch.Core/1.0.0": {
         "runtime": {
-          "GameMatch.Core.dll": {}
+          "GameMatch.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

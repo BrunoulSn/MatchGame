@@ -320,7 +320,10 @@
       },
       "GameMatch.Core/1.0.0": {
         "runtime": {
-          "GameMatch.Core.dll": {}
+          "GameMatch.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "GameMatch.Infrastructure/1.0.0": {
@@ -330,7 +333,10 @@
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "runtime": {
-          "GameMatch.Infrastructure.dll": {}
+          "GameMatch.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "GameMatch.Services/1.0.0": {
@@ -343,7 +349,10 @@
           "System.IdentityModel.Tokens.Jwt": "7.5.1"
         },
         "runtime": {
-          "GameMatch.Services.dll": {}
+          "GameMatch.Services.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

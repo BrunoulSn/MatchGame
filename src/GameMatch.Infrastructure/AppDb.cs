@@ -10,11 +10,7 @@ public class AppDb : DbContext
 
     public DbSet<User> Users => Set<User>();
     public DbSet<Group> Groups => Set<Group>();
-    public DbSet<Position> Positions => Set<Position>();
-    public DbSet<GroupPosition> GroupPositions => Set<GroupPosition>();
     public DbSet<GroupMember> GroupMembers => Set<GroupMember>();
-    public DbSet<Event> Events => Set<Event>();
-    public DbSet<Sport> Sports => Set<Sport>();
 
 
 
@@ -24,6 +20,5 @@ public class AppDb : DbContext
         b.Entity<User>().HasIndex(x => x.Email).IsUnique();
         b.Entity<Group>().HasIndex(x => x.Name).IsUnique();
         b.Entity<GroupMember>().HasIndex(x => new { x.GroupId, x.UserId }).IsUnique();
-        b.Entity<GroupPosition>().HasIndex(x => new { x.GroupId, x.PositionId }).IsUnique();
     }
 }

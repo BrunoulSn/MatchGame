@@ -16,7 +16,6 @@ builder.Services.AddDbContext<AppDb>(opt => {
 
 
 builder.Services.AddScoped<GroupService>();
-builder.Services.AddScoped<MatchService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

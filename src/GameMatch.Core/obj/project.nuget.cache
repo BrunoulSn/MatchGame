@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bKTBoVY3iXONKr04OXw48Mv1zPF5qP+tqhxPXAp5+GM2P6CW/N67/L2g3XMzTx11W8c2uA1HxF+tUO4RPzJDsw==",
+  "dgSpecHash": "OjLkWYVLA4c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+  "projectFilePath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

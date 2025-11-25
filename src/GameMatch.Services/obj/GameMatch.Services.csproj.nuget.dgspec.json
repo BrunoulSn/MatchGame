@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj": {}
+    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Services\\GameMatch.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj",
         "projectName": "GameMatch.Core",
-        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj",
-        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\obj\\",
+        "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,7 +38,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -59,24 +65,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
+    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
         "projectName": "GameMatch.Infrastructure",
-        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,8 +97,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
-                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj"
+              "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+                "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj"
               }
             }
           }
@@ -101,7 +107,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -138,24 +150,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
+    "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Services\\GameMatch.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Services\\GameMatch.Services.csproj",
         "projectName": "GameMatch.Services",
-        "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\GameMatch.Services.csproj",
-        "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Services\\obj\\",
+        "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Services\\GameMatch.Services.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -170,11 +182,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
-                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Core\\GameMatch.Core.csproj"
+              "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj": {
+                "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Core\\GameMatch.Core.csproj"
               },
-              "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\MatchGameBack\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
+              "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\bruno\\Documents\\Senac\\MatchGame-Backend\\MatchGame\\src\\GameMatch.Infrastructure\\GameMatch.Infrastructure.csproj"
               }
             }
           }
@@ -183,7 +195,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net7.0": {
@@ -222,7 +240,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
