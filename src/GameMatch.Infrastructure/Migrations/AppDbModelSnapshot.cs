@@ -19,28 +19,6 @@ namespace GameMatch.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("GameMatch.Core.Models.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Place")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("StartAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("Events");
-                });
-
             modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
                 {
                     b.Property<int>("Id")
@@ -53,15 +31,6 @@ namespace GameMatch.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("MaxMembers")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MeetingAddress")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("MeetingDate")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
@@ -69,18 +38,10 @@ namespace GameMatch.Infrastructure.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PhotoUrl")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("SportId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("SportId");
 
                     b.ToTable("Groups");
                 });
@@ -94,9 +55,6 @@ namespace GameMatch.Infrastructure.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PositionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
@@ -104,8 +62,6 @@ namespace GameMatch.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.HasIndex("UserId");
 
@@ -115,76 +71,38 @@ namespace GameMatch.Infrastructure.Migrations
                     b.ToTable("GroupMembers");
                 });
 
-            modelBuilder.Entity("GameMatch.Core.Models.GroupPosition", b =>
+            modelBuilder.Entity("GameMatch.Core.Models.Team", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OpenSpots")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Required")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
-
-                    b.HasIndex("GroupId", "PositionId")
-                        .IsUnique();
-
-                    b.ToTable("GroupPositions");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Position", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Characteristics")
+                    b.Property<string>("Address")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("SportId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SportId");
-
-                    b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Sport", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("IconUrl")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int?>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SportType")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sports");
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("GameMatch.Core.Models.User", b =>
@@ -225,39 +143,28 @@ namespace GameMatch.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("GameMatch.Core.Models.Event", b =>
+            modelBuilder.Entity("TeamUser", b =>
                 {
-                    b.HasOne("GameMatch.Core.Models.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("MembersId")
+                        .HasColumnType("int");
 
-                    b.Navigation("Group");
-                });
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
 
-            modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
-                {
-                    b.HasOne("GameMatch.Core.Models.Sport", "Sport")
-                        .WithMany("Groups")
-                        .HasForeignKey("SportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasKey("MembersId", "TeamId");
 
-                    b.Navigation("Sport");
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("TeamMembers", (string)null);
                 });
 
             modelBuilder.Entity("GameMatch.Core.Models.GroupMember", b =>
                 {
                     b.HasOne("GameMatch.Core.Models.Group", "Group")
-                        .WithMany("Members")
+                        .WithMany()
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GameMatch.Core.Models.Position", "Position")
-                        .WithMany()
-                        .HasForeignKey("PositionId");
 
                     b.HasOne("GameMatch.Core.Models.User", "User")
                         .WithMany()
@@ -267,53 +174,32 @@ namespace GameMatch.Infrastructure.Migrations
 
                     b.Navigation("Group");
 
-                    b.Navigation("Position");
-
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("GameMatch.Core.Models.GroupPosition", b =>
+            modelBuilder.Entity("GameMatch.Core.Models.Team", b =>
                 {
-                    b.HasOne("GameMatch.Core.Models.Group", "Group")
-                        .WithMany("Positions")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GameMatch.Core.Models.Position", "Position")
+                    b.HasOne("GameMatch.Core.Models.User", "Owner")
                         .WithMany()
-                        .HasForeignKey("PositionId")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("TeamUser", b =>
+                {
+                    b.HasOne("GameMatch.Core.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("MembersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Group");
-
-                    b.Navigation("Position");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Position", b =>
-                {
-                    b.HasOne("GameMatch.Core.Models.Sport", "Sport")
-                        .WithMany("Positions")
-                        .HasForeignKey("SportId")
+                    b.HasOne("GameMatch.Core.Models.Team", null)
+                        .WithMany()
+                        .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Sport");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
-                {
-                    b.Navigation("Members");
-
-                    b.Navigation("Positions");
-                });
-
-            modelBuilder.Entity("GameMatch.Core.Models.Sport", b =>
-                {
-                    b.Navigation("Groups");
-
-                    b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618
         }

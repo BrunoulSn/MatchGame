@@ -30,7 +30,6 @@
       "Microsoft.EntityFrameworkCore/7.0.20": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.20",
-          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.20",
           "Microsoft.Extensions.Caching.Memory": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.Extensions.Logging": "7.0.0"
@@ -50,7 +49,6 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/7.0.20": {},
       "Microsoft.EntityFrameworkCore.Relational/7.0.2": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.20",
@@ -283,13 +281,6 @@
       "sha512": "sha512-ds6XFVrh34AWYAedlMo8tVkmxsxyXnwP0N6FTjlq4p1oR6TQktIabUDkSMKgStVYt4c4b4Rus3H/Oad9I4uSlQ==",
       "path": "microsoft.entityframeworkcore.abstractions/7.0.20",
       "hashPath": "microsoft.entityframeworkcore.abstractions.7.0.20.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Analyzers/7.0.20": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-doouHLWFcYcd08QUh9+4aZu3sk4WySp/aSOHeIzNhMJ58ESQXUAGDvB1sjJ4HmE0tmCea51NGzgtHE5IBmFLGg==",
-      "path": "microsoft.entityframeworkcore.analyzers/7.0.20",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.7.0.20.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.2": {
       "type": "package",
