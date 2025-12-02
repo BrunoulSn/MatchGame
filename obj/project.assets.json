@@ -4460,23 +4460,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abel.fonseca\\.nuget\\packages\\": {},
+    "C:\\Users\\Abel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj",
+      "projectUniqueName": "F:\\AbelFonseca\\Área de Trabalho\\bff\\BFF_GameMatch.csproj",
       "projectName": "BFF_GameMatch",
-      "projectPath": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\BFF_GameMatch.csproj",
-      "packagesPath": "C:\\Users\\abel.fonseca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abel.fonseca\\Desktop\\Bruno\\obj\\",
+      "projectPath": "F:\\AbelFonseca\\Área de Trabalho\\bff\\BFF_GameMatch.csproj",
+      "packagesPath": "C:\\Users\\Abel\\.nuget\\packages\\",
+      "outputPath": "F:\\AbelFonseca\\Área de Trabalho\\bff\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\abel.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4484,7 +4484,6 @@
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4497,7 +4496,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net7.0": {
@@ -4571,7 +4576,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107\\RuntimeIdentifierGraph.json"
       }
     }
   }
