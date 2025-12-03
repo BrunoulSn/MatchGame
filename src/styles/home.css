@@ -1,0 +1,262 @@
+/* ---------- LAYOUT GERAL ---------- */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #4c4c4c;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ---------- HEADER ---------- */
+/* HEADER BASE */
+header {
+  width: 100%;
+  height: 80px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* mantém tudo nas pontas */
+  padding: 0 40px; /* espaçamento interno */
+  box-sizing: border-box;
+}
+
+
+
+#main-header {
+  width: 100%;
+  background: #1e1e1e;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NAVBAR – divide o header em 3 partes */
+.navbar {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  font-size: 28px;
+  color: rgb(63, 156, 255);
+  font-weight: bold;
+}
+
+/* SEARCH BOX */
+.search-box {
+  flex: 1; /* ocupa espaço e separa os lados */
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 60%;
+  color: #929292;
+  background-color: #3d3d3d;
+  max-width: 450px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Container para organizar os itens da esquerda */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* espaço entre MatchGame e o input */
+}
+
+/* LADO DIREITO do header */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: #333;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+.dropdown-content div {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.dropdown-content div:hover {
+  background: #929292;
+}
+
+/* ---------- GRID DE TIMES ---------- */
+main {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px; /* espaço seguro entre as duas seções */
+  box-sizing: border-box;
+}
+
+.teams-section {
+  flex: 2;
+  min-width: 0; /* evita estouro */
+  color: white;
+}
+
+.form-section {
+  flex: 1;
+  max-width: 300px; /* impede ultrapassar a tela */
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: #1b1b1b;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  transition: 0.2s;
+}
+
+.team-card:hover {
+  transform: scale(1.02);
+}
+
+.category-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #00b7ff;
+  color: #000;
+  font-weight: bold;
+}
+
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+
+.actions button {
+  flex: 1;
+  padding: 8px;
+  background: #2a2a2a;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: white;
+}
+
+.actions .delete {
+  background: #ff3b3b;
+}
+
+/* ---------- FORMULÁRIO ---------- */
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-section input{
+  width: 300px;
+  padding: 10px;
+  background: #2a2a2a;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  margin-left: -10px;
+}
+.form-section select {
+  width: 320px;
+  padding: 10px;
+  background: #2a2a2a;
+  border: none;
+  border-radius: 6px;
+  margin-left: -10px;
+  color: #ffffff;
+}
+
+.form-section button {
+  padding: 12px;
+  background: #00b7ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  transition: 0.2s;
+  margin-left: -5px;
+}
+
+.form-section button:hover {
+  background: #0099d6;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  margin-top: auto;
+  background: #111;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+} 
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}

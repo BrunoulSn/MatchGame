@@ -1,0 +1,102 @@
+/* HEADER BASE */
+#main-header {
+  width: 100%;
+  background: #1e1e1e;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 28px;
+  color: rgb(63, 156, 255);
+  font-weight: bold;
+}
+
+/* SEARCH BOX */
+.search-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 60%;
+  max-width: 450px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #3d3d3d;
+  color: #fff;
+  font-size: 15px;
+}
+
+/* DROPDOWN */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: #333;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #111;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+.dropdown-content div {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.dropdown-content div:hover {
+  background: #929292;
+}
+
+/* BOTÕES LOGIN / CADASTRO / PERFIL */
+.header-buttons button {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #00b7ff;
+  color: #000;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.header-buttons button:hover {
+  background: #0099d6;
+}
