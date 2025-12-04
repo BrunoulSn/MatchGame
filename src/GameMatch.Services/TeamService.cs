@@ -1,5 +1,7 @@
 ﻿using GameMatch.Core.Models;
 using GameMatch.Infrastructure.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GameMatch.Services
 {
@@ -12,19 +14,32 @@ namespace GameMatch.Services
             _repo = repo;
         }
 
-        public Task<IEnumerable<Team>> GetAllAsync(CancellationToken ct) =>
-            _repo.GetAllAsync(ct);
+        public async Task<IEnumerable<Team>> GetAllAsync()
+        {
+            return await _repo.GetAllAsync();
+        }
 
-        public Task<Team?> GetByIdAsync(int id, CancellationToken ct) =>
-            _repo.GetByIdAsync(id, ct);
+        public async Task<Team?> GetByIdAsync(int id)
+        {
+            return await _repo.GetByIdAsync(id);
+        }
 
-        public Task<Team> CreateAsync(Team team, CancellationToken ct) =>
-            _repo.CreateAsync(team, ct);
+        public async Task AddAsync(Team team)
+        {
+            await _repo.AddAsync(team);
+            await _repo.SaveChangesAsync();
+        }
 
-        public Task<bool> UpdateAsync(Team team, CancellationToken ct) =>
-            _repo.UpdateAsync(team, ct);
+        public async Task UpdateAsync(Team team)
+        {
+            await _repo.UpdateAsync(team);
+            await _repo.SaveChangesAsync();
+        }
 
-        public Task<bool> DeleteAsync(int id, CancellationToken ct) =>
-            _repo.DeleteAsync(id, ct);
+        public async Task DeleteAsync(int id)
+        {
+            await _repo.DeleteAsync(id);
+            await _repo.SaveChangesAsync();
+        }
     }
 }

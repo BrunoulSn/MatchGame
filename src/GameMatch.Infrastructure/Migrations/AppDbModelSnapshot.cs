@@ -16,7 +16,7 @@ namespace GameMatch.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.20")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
@@ -37,6 +37,9 @@ namespace GameMatch.Infrastructure.Migrations
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Sports")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -86,6 +89,9 @@ namespace GameMatch.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -99,6 +105,8 @@ namespace GameMatch.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("OwnerId");
 
@@ -125,7 +133,7 @@ namespace GameMatch.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -161,7 +169,7 @@ namespace GameMatch.Infrastructure.Migrations
             modelBuilder.Entity("GameMatch.Core.Models.GroupMember", b =>
                 {
                     b.HasOne("GameMatch.Core.Models.Group", "Group")
-                        .WithMany()
+                        .WithMany("Members")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -179,10 +187,18 @@ namespace GameMatch.Infrastructure.Migrations
 
             modelBuilder.Entity("GameMatch.Core.Models.Team", b =>
                 {
+                    b.HasOne("GameMatch.Core.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("GameMatch.Core.Models.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Group");
 
                     b.Navigation("Owner");
                 });
@@ -200,6 +216,11 @@ namespace GameMatch.Infrastructure.Migrations
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GameMatch.Core.Models.Group", b =>
+                {
+                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

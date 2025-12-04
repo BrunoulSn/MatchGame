@@ -1,4 +1,4 @@
-﻿using GameMatch.Core.Models;
+﻿/*using GameMatch.Core.Models;
 using GameMatch.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -74,3 +74,4 @@ namespace GameMatch.Api.Controllers
         }
     }
 }
+*/

@@ -30,21 +30,13 @@ public class GroupsController : ControllerBase
 
     //public record CreateGroupDto(string Name, string? Description, int OwnerId);
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] GroupCreateDto dto)
+    public async Task<IActionResult> Create([FromBody] Group group)
     {
-
-        var g = new Group
-        {
-            Name = dto.Name,
-            Description = dto.Description,
-            OwnerId = dto.OwnerId,
-            CreatedAt = DateTime.UtcNow
-        };
-        _db.Groups.Add(g);
+        group.CreatedAt = DateTime.UtcNow;
+        _db.Groups.Add(group);
         await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = g.Id }, g);
+        return CreatedAtAction(nameof(Get), new { id = group.Id }, group);
     }
-
     //public record UpdateGroupDto(string Name, string? Description);
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody] GroupUpdateDto dto)

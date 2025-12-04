@@ -2,11 +2,11 @@
   "profiles": {
     "GameMatch.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5182", // APENAS HTTP
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:63533"
+      }
     }
   }
 }
