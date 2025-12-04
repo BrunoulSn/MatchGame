@@ -1,4 +1,4 @@
-namespace MyBffProject.Proxies
+namespace BFF_GameMatch.Proxies
 {
     public class ProxyResponse
     {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace MyBffProject.Authentication
+namespace BFF_GameMatch.Authentication
 {
     // Handler simples para desenvolvimento: se enviar header X-User-Id ou Authorization: Bearer {id}, cria uma identidade com claim NameIdentifier.
     public class DevAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>

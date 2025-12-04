@@ -1,47 +1,32 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using MyBffProject.Services;
-using BFF_GameMatch.Services.Dtos.Auth;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Json;
 
-namespace MyBffProject.Controllers
+namespace BFF_GameMatch.Controllers
 {
     [ApiController]
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        private readonly IBackendProxyService _proxy;
-        private readonly ILogger<AuthController> _logger;
+        private readonly HttpClient _http;
 
-        public AuthController(IBackendProxyService proxy, ILogger<AuthController> logger)
+        public AuthController(IHttpClientFactory factory)
         {
-            _proxy = proxy;
-            _logger = logger;
+            _http = factory.CreateClient("GameMatchApi");
         }
 
-      /*  [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest dto, CancellationToken ct)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest dto)
         {
-            if (!ModelState.IsValid) return ValidationProblem(ModelState);
-            var resp = await _proxy.RegisterAsync(dto, ct);
-            var result = new ContentResult();
-            result.Content = resp.Content ?? string.Empty;
-            result.ContentType = resp.ContentType ?? "application/json";
-            result.StatusCode = resp.StatusCode;
-            return result;
-        }*/
+            var response = await _http.PostAsJsonAsync("/api/auth/login", dto);
 
-        /*[HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest dto, CancellationToken ct)
-        {
-            if (!ModelState.IsValid) return ValidationProblem(ModelState);
-            var resp = await _proxy.LoginAsync(dto, ct);
-            var result = new ContentResult();
-            result.Content = resp.Content ?? string.Empty;
-            result.ContentType = resp.ContentType ?? "application/json";
-            result.StatusCode = resp.StatusCode;
-            return result;
-        }*/
+            var body = await response.Content.ReadAsStringAsync();
+            return Content(body, "application/json");
+        }
+    }
+
+    public class LoginRequest
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }

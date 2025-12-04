@@ -1,7 +1,7 @@
 using FluentValidation;
 using BFF_GameMatch.Services.Dtos.Auth;
 
-namespace MyBffProject.Validators
+namespace BFF_GameMatch.Validators
 {
     public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
     {

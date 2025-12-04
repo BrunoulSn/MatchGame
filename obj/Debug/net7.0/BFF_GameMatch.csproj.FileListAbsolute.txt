@@ -276,9 +276,6 @@ C:\Users\abel.fonseca\Desktop\Bruno\obj\Debug\net7.0\refint\BFF_GameMatch.dll
 C:\Users\abel.fonseca\Desktop\Bruno\obj\Debug\net7.0\BFF_GameMatch.pdb
 C:\Users\abel.fonseca\Desktop\Bruno\obj\Debug\net7.0\BFF_GameMatch.genruntimeconfig.cache
 C:\Users\abel.fonseca\Desktop\Bruno\obj\Debug\net7.0\ref\BFF_GameMatch.dll
-F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_GameMatch.dll
-F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\refint\BFF_GameMatch.dll
-F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_GameMatch.pdb
 F:\AbelFonseca\Área de Trabalho\bff\bin\Debug\net7.0\appsettings.Development.json
 F:\AbelFonseca\Área de Trabalho\bff\bin\Debug\net7.0\appsettings.json
 F:\AbelFonseca\Área de Trabalho\bff\bin\Debug\net7.0\appsettings.Production.json
@@ -366,5 +363,8 @@ F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\staticwebassets.developmen
 F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\staticwebassets.build.endpoints.json
 F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\swae.build.ex.cache
 F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_Game.0BECC797.Up2Date
+F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_GameMatch.dll
+F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\refint\BFF_GameMatch.dll
+F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_GameMatch.pdb
 F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\BFF_GameMatch.genruntimeconfig.cache
 F:\AbelFonseca\Área de Trabalho\bff\obj\Debug\net7.0\ref\BFF_GameMatch.dll

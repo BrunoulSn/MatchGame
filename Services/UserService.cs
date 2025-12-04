@@ -1,133 +1,169 @@
-using Microsoft.EntityFrameworkCore;
+﻿using System.Net.Http.Json;
+using BFF_GameMatch.Services.Dtos;
 using BFF_GameMatch.Services.Dtos.User;
-using MyBffProject.Data;
-using MyBffProject.Models;
-using MyBffProject.Services.Results;
-using MyBffProject.Services;
+using BFF_GameMatch.Services.Interfaces;
+using BFF_GameMatch.Services.Results;
 
 namespace BFF_GameMatch.Services
 {
     public class UserService : IUserService
     {
-        private readonly AppDbContext _db;
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(AppDbContext db)
+        public UserService(HttpClient httpClient, ILogger<UserService> logger)
         {
-            _db = db;
+            _httpClient = httpClient;
+            _logger = logger;
         }
 
-        public async Task<PagedResult<UserDto>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct)
+        public async Task<PagedResult<UserDto>> GetPagedAsync(
+            int page, int pageSize, string? q, CancellationToken ct)
         {
-            var query = _db.Users.AsNoTracking();
-
-            if (!string.IsNullOrWhiteSpace(q))
+            try
             {
-                var term = q.Trim();
-                query = query.Where(u =>
-                    (u.Name != null && u.Name.Contains(term)) ||
-                    (u.Email != null && u.Email.Contains(term)));
-            }
+                // Buscar do backend como BackendUserDto
+                var backendUsers = await _httpClient.GetFromJsonAsync<List<BackendUserDto>>("api/users", ct);
+                var allUsers = backendUsers ?? new List<BackendUserDto>();
 
-            var total = await query.CountAsync(ct);
-            var users = await query
-                .OrderBy(u => u.Id)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync(ct);
-
-            var items = users.Select(u => new UserDto
-            {
-                Id = u.Id,
-                Name = u.Name,
-                Email = u.Email,
-                CPF = u.CPF,
-                Phone = u.Phone
-            });
-
-            return new PagedResult<UserDto>
-            {
-                Items = items,
-                TotalCount = total,
-                Page = page,
-                PageSize = pageSize
-            };
-        }
-
-        public async Task<UserDto?> GetByIdAsync(int id, CancellationToken ct)
-        {
-            var user = await _db.Users.AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Id == id, ct);
-
-            return user == null
-                ? null
-                : new UserDto
+                // Converter para UserDto
+                var userDtos = allUsers.Select(u => new UserDto
                 {
-                    Id = user.Id,
-                    Name = user.Name,
-                    Email = user.Email,
-                    CPF = user.CPF,
-                    Phone = user.Phone
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    Phone = u.Phone ?? string.Empty,
+                    CPF = string.Empty
+                }).ToList();
+
+                // Aplicar filtro
+                if (!string.IsNullOrWhiteSpace(q))
+                {
+                    userDtos = userDtos.Where(u =>
+                        u.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ||
+                        u.Email.Contains(q, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
+
+                // Paginação manual
+                var pagedItems = userDtos
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return new PagedResult<UserDto>
+                {
+                    Items = pagedItems,
+                    TotalCount = userDtos.Count,
+                    Page = page,
+                    PageSize = pageSize
                 };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar usuários paginados");
+                return new PagedResult<UserDto>();
+            }
+        }
+
+        public async Task<UserDto?> GetByIdAsync(string id, CancellationToken ct)
+        {
+            try
+            {
+                var backendUser = await _httpClient.GetFromJsonAsync<BackendUserDto>($"api/users/{id}", ct);
+                if (backendUser == null) return null;
+
+                return new UserDto
+                {
+                    Id = backendUser.Id,
+                    Name = backendUser.Name,
+                    Email = backendUser.Email,
+                    Phone = backendUser.Phone ?? string.Empty,
+                    CPF = string.Empty
+                };
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         public async Task<UserDto> CreateAsync(UserCreateDto input, CancellationToken ct)
         {
-            var user = new User
+            try
             {
-                Name = input.Name,
-                CPF = input.CPF,
-                Phone = input.Phone,
-                Email = input.Email,
-                Password = input.Password
-            };
+                // 🔥 Envia "password" (texto), não "PasswordHash"
+                var userData = new
+                {
+                    Name = input.Name,
+                    Email = input.Email,
+                    Phone = input.Phone,
+                    Password = input.Password, // SENHA EM TEXTO
+                    BirthDate = input.BirthDate,
+                    Skills = input.Skills,
+                    Availability = input.Availability
+                };
 
-            await _db.Users.AddAsync(user, ct);
-            await _db.SaveChangesAsync(ct);
+                var response = await _httpClient.PostAsJsonAsync("api/users", userData, ct);
+                response.EnsureSuccessStatusCode();
 
-            return new UserDto
+                var created = await response.Content.ReadFromJsonAsync<UserDto>(ct);
+                return created ?? throw new InvalidOperationException("Resposta vazia do backend");
+            }
+            catch (Exception ex)
             {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                CPF = user.CPF,
-                Phone = user.Phone
-            };
+                _logger.LogError(ex, "Erro ao criar usuário");
+                throw;
+            }
         }
 
         public async Task<bool> UpdateAsync(UserUpdateDto input, CancellationToken ct)
         {
-            var existing = await _db.Users.FirstOrDefaultAsync(u => u.Id == input.Id, ct);
-            if (existing == null) return false;
+            try
+            {
+                var userData = new
+                {
+                    Name = input.Name,
+                    Email = input.Email,
+                    Phone = input.Phone,
+                    BirthDate = (DateOnly?)null,
+                    Skills = (string?)null,
+                    Availability = (string?)null,
+                    PasswordHash = input.Password // 🔥 Envia se tiver
+                };
 
-            existing.Name = input.Name ?? existing.Name;
-            existing.Phone = input.Phone ?? existing.Phone;
-            existing.Email = input.Email ?? existing.Email;
-            if (!string.IsNullOrEmpty(input.Password))
-                existing.Password = input.Password;
+                var response = await _httpClient.PutAsJsonAsync($"api/users/{input.Id}", userData, ct);
 
-            _db.Users.Update(existing);
-            await _db.SaveChangesAsync(ct);
-            return true;
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    return false;
+
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao atualizar usuário {UserId}", input.Id);
+                return false;
+            }
         }
 
-        public async Task<bool> DeleteAsync(int id, CancellationToken ct)
+        public async Task<bool> DeleteAsync(string id, CancellationToken ct)
         {
-            var existing = await _db.Users.FindAsync(new object[] { id }, ct);
-            if (existing == null) return false;
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"api/users/{id}", ct);
 
-            _db.Users.Remove(existing);
-            await _db.SaveChangesAsync(ct);
-            return true;
-        }
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    return false;
 
-        public Task<UserDto?> GetByIdAsync(string id, CancellationToken ct)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteAsync(string id, CancellationToken ct)
-        {
-            throw new NotImplementedException();
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao deletar usuário {UserId}", id);
+                return false;
+            }
         }
     }
 }

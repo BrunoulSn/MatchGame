@@ -1,21 +1,19 @@
-﻿namespace MyBffProject.Models
+﻿namespace BFF_GameMatch.Models
 {
     public class Team
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
+        public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public string? SportType { get; set; }
 
-        // Owner como relação opcional
-        public int? OwnerId { get; set; }
-        public User? Owner { get; set; }
-
-        // Membros (many-to-many)
-        public List<User> Members { get; set; } = new();
-
+        // Propriedades adicionais
+        public int OwnerId { get; set; }
         public string? Address { get; set; }
         public string? Photo { get; set; }
-        public DateTime CreatedAt { get; set; }
+
+        // Relacionamento com o Grupo (caso exista)
+        public int GroupId { get; set; }
+        public Group Group { get; set; } = default!;
     }
 }

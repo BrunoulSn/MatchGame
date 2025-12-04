@@ -1,14 +1,14 @@
-using MyBffProject.Models;
-using MyBffProject.Services.Results;
-using System.Threading;
+using BFF_GameMatch.Services.Dtos.Team;
+using BFF_GameMatch.Services.Results;
 
-namespace MyBffProject.Services
+namespace BFF_GameMatch.Services.Interfaces
+
 {
     public interface ITeamService
     {
-        Task<PagedResult<Team>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct);
-        Task<Team?> GetByIdAsync(int id, CancellationToken ct);
-        Task<Team> CreateAsync(TeamCreateDto input, string? ownerUserId, CancellationToken ct);
+        Task<PagedResult<TeamDto>> GetPagedAsync(int page, int pageSize, string? q, CancellationToken ct);
+        Task<TeamDto?> GetByIdAsync(int id, CancellationToken ct);
+        Task<TeamDto> CreateAsync(TeamCreateDto input, string userId, CancellationToken ct);
         Task<bool> UpdateAsync(TeamUpdateDto input, CancellationToken ct);
         Task<bool> DeleteAsync(int id, CancellationToken ct);
     }

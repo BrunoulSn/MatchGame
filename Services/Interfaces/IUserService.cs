@@ -1,7 +1,7 @@
-using BFF_GameMatch.Services.Dtos.User;
-using MyBffProject.Services.Results;
+﻿using BFF_GameMatch.Services.Dtos.User;
+using BFF_GameMatch.Services.Results;
 
-namespace MyBffProject.Services
+namespace BFF_GameMatch.Services.Interfaces
 {
     public interface IUserService
     {
@@ -11,4 +11,4 @@ namespace MyBffProject.Services
         Task<bool> UpdateAsync(UserUpdateDto input, CancellationToken ct);
         Task<bool> DeleteAsync(string id, CancellationToken ct);
     }
-}   
+}

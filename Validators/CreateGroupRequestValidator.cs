@@ -1,7 +1,10 @@
 using FluentValidation;
-using BFF_GameMatch.Services.Dtos.Team;
 
-namespace MyBffProject.Validators
+using BFF_GameMatch.Services.Dtos.Group;
+
+
+
+namespace BFF_GameMatch.Validators
 {
     public class CreateGroupRequestValidator : AbstractValidator<CreateGroupRequest>
     {

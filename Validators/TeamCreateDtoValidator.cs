@@ -1,6 +1,6 @@
 using FluentValidation;
-
-namespace MyBffProject.Validators
+using BFF_GameMatch.Services.Dtos.Team;
+namespace BFF_GameMatch.Validators
 {
     public class TeamCreateDtoValidator : AbstractValidator<TeamCreateDto>
     {

@@ -9,22 +9,11 @@
     }
   },
   "profiles": {
-    "http": {
+    "BFF_GameMatch": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5182",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7036;http://localhost:5182",
+      "applicationUrl": "http://localhost:8299",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

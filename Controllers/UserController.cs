@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using BFF_GameMatch.Services.Dtos.User;
-using Microsoft.AspNetCore.Authorization;
+using BFF_GameMatch.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using MyBffProject.Models;
-using MyBffProject.Services;
-using MyBffProject.Services.Results;
-
+using BFF_GameMatch.Services.Results;
+using System.Net.Http.Json;
 
 namespace MyBffProject.Controllers
 {
@@ -17,17 +15,20 @@ namespace MyBffProject.Controllers
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
         private readonly ILogger<UserController> _logger;
+        private readonly HttpClient _http;
 
-        public UserController(IUserService userService, IMapper mapper, ILogger<UserController> logger)
+        public UserController(
+            IUserService userService,
+            IMapper mapper,
+            ILogger<UserController> logger,
+            IHttpClientFactory factory)
         {
             _userService = userService;
             _mapper = mapper;
             _logger = logger;
+            _http = factory.CreateClient("GameMatchApi");
         }
 
-        /// <summary>
-        /// Lista usuários com paginação e pesquisa simples.
-        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(PagedResult<UserDto>), 200)]
         public async Task<ActionResult<PagedResult<UserDto>>> GetAll(
@@ -44,9 +45,6 @@ namespace MyBffProject.Controllers
             return Ok(_mapper.Map<PagedResult<UserDto>>(result));
         }
 
-        /// <summary>
-        /// Obtém um usuário por ID.
-        /// </summary>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(UserDto), 200)]
         [ProducesResponseType(404)]
@@ -57,9 +55,6 @@ namespace MyBffProject.Controllers
             return Ok(_mapper.Map<UserDto>(user));
         }
 
-        /// <summary>
-        /// Cria um novo usuário.
-        /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(UserDto), 201)]
         [ProducesResponseType(400)]
@@ -72,11 +67,7 @@ namespace MyBffProject.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, _mapper.Map<UserDto>(created));
         }
 
-        /// <summary>
-        /// Atualiza dados do usuário.
-        /// </summary>
         [HttpPut("{id}")]
-        [Authorize]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -93,11 +84,7 @@ namespace MyBffProject.Controllers
             return NoContent();
         }
 
-        /// <summary>
-        /// Remove um usuário.
-        /// </summary>
         [HttpDelete("{id}")]
-        //[Authorize]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken = default)
@@ -108,5 +95,47 @@ namespace MyBffProject.Controllers
             _logger.LogInformation("User deleted (Id={UserId})", id);
             return NoContent();
         }
+
+        // 🔹 Login simples usando Email + Password
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] BffLoginRequest dto)
+        {
+            var response = await _http.GetAsync("/api/users/login");
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, "Erro ao acessar backend");
+
+            var users = await response.Content.ReadFromJsonAsync<List<UserDto>>();
+            var user = users?.FirstOrDefault(u => u.Email == dto.Email && u.Password == dto.Password);
+
+            if (user == null)
+                return Unauthorized("Usuário ou senha inválidos");
+
+            return Ok(new
+            {
+                message = "Login realizado com sucesso",
+                user
+            });
+        }
+
+        // classe separada para evitar conflito com o backend
+        public class BffLoginRequest
+        {
+            public string Email { get; set; } = string.Empty;
+            public string Password { get; set; } = string.Empty;
+        }
+    } // <-- essa fecha a classe UserController
+
+    public class BffLoginRequest
+        {
+            public string Email { get; set; } = string.Empty;
+            public string Password { get; set; } = string.Empty;
+        }
+
+
+        public class LoginRequest
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }
