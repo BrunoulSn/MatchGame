@@ -1,88 +1,68 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5182/api/v1",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: "http://localhost:8299/api", // URL base do BFF
+  headers: { "Content-Type": "application/json" },
 });
 
 // ====================================
-// TIMES
+// GROUPS (Times/Grupos)
 // ====================================
 
-export async function getTeams() {
-  return api.get("/Team");
+export async function getGroups() {
+  return api.get("/groups");
 }
 
-export async function createTeam(data) {
-  return api.post("/Team", data);
+export async function createGroup(data) {
+  return api.post("/groups", data);
 }
 
-export async function updateTeam(id, data) {
-  return api.put(`/Team/${id}`, data);
+export async function updateGroup(id, data) {
+  return api.put(`/groups/${id}`, data);
 }
 
-export async function deleteTeam(id) {
-  return api.delete(`/Team/${id}`);
+export async function deleteGroup(id) {
+  return api.delete(`/groups/${id}`);
 }
 
 // ====================================
-// USUÁRIOS
+// USERS
 // ====================================
 
 export async function registerUser(data) {
-  return api.post("/User", data);
+  return api.post("/v1/User", data);
 }
 
 export async function getUserById(id) {
-  return api.get(`/User/${id}`);
+  return api.get(`/v1/User/${id}`);
 }
 
 export async function updateUser(id, data) {
-  return api.put(`/User/${id}`, data);
+  return api.put(`/v1/User/${id}`, data);
 }
 
 export async function deleteUser(id) {
-  return api.delete(`/User/${id}`);
+  return api.delete(`/v1/User/${id}`);
 }
 
 // ====================================
-// AUTENTICAÇÃO
+// LOGIN FUNCTIONALITY
 // ====================================
 
-export async function loginUser(credentials) {
-  // Espera-se que o backend tenha rota: POST /Auth/login
-  const response = await api.post("/Auth/login", credentials);
-  const token = response.data.token;
-
-  if (token) {
-    localStorage.setItem("token", token);
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+export async function loginUser(email, password) {
+  try {
+    const response = await api.post("/v1/user/login", { email, password });
+    return response.data.user; // Retorna o usuário logado
+  } catch (error) {
+    throw new Error("Usuário ou senha inválidos");
   }
-
-  return response;
 }
 
 export function logoutUser() {
-  localStorage.removeItem("token");
-  delete api.defaults.headers.common["Authorization"];
+  localStorage.removeItem("user");
 }
 
-// ====================================
-// UTILITÁRIOS
-// ====================================
-
-export function setAuthToken(token) {
-  if (token) {
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else {
-    delete api.defaults.headers.common["Authorization"];
-  }
-}
-
-// Inicializa token salvo (caso usuário já esteja logado)
-const token = localStorage.getItem("token");
-if (token) setAuthToken(token);
+const token = localStorage.getItem("user");
+if (token) api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 export default api;

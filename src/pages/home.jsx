@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Header from "../components/header";
 import "../styles/home.css";
-import { getTeams, createTeam, updateTeam, deleteTeam } from "../services/api";
+import { getGroups, createGroup, updateGroup, deleteGroup } from "../services/api";
 
 export default function Home() {
-  const [teams, setTeams] = useState([]);
+  const [groups, setGroups] = useState([]); // Alterado de 'teams' para 'groups'
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
-  const [editingTeam, setEditingTeam] = useState(null);
+  const [editingGroup, setEditingGroup] = useState(null); // Alterado de 'team' para 'group'
 
   const [form, setForm] = useState({
     name: "",
@@ -16,19 +16,19 @@ export default function Home() {
   });
 
   // -------------------------------
-  // Buscar times do backend (BFF)
+  // Buscar grupos do backend (BFF)
   // -------------------------------
-  async function loadTeams() {
+  async function loadGroups() { // Alterado de 'loadTeams' para 'loadGroups'
     try {
-      const response = await getTeams();
-      setTeams(response.data.items || response.data || []);
+      const response = await getGroups(); // Alterado de 'getTeams' para 'getGroups'
+      setGroups(response.data.items || response.data || []); // Alterado de 'teams' para 'groups'
     } catch (error) {
-      console.error("Erro ao carregar times:", error);
+      console.error("Erro ao carregar grupos:", error);
     }
   }
 
   useEffect(() => {
-    loadTeams();
+    loadGroups();
   }, []);
 
   // -------------------------------
@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   // -------------------------------
-  // Criar ou editar time
+  // Criar ou editar grupo
   // -------------------------------
   async function handleSubmit(e) {
     e.preventDefault();
@@ -50,50 +50,50 @@ export default function Home() {
     }
 
     try {
-      if (editingTeam !== null) {
-        const team = teams[editingTeam];
-        await updateTeam(team.id, form);
-        alert("Time atualizado!");
+      if (editingGroup !== null) {
+        const group = groups[editingGroup]; // Alterado de 'team' para 'group'
+        await updateGroup(group.id, form); // Alterado de 'updateTeam' para 'updateGroup'
+        alert("Grupo atualizado!");
       } else {
-        await createTeam(form);
-        alert("Time criado!");
+        await createGroup(form); // Alterado de 'createTeam' para 'createGroup'
+        alert("Grupo criado!");
       }
       setForm({ name: "", city: "", category: "" });
-      setEditingTeam(null);
-      loadTeams();
+      setEditingGroup(null);
+      loadGroups(); // Recarrega os grupos após a criação ou edição
     } catch (err) {
       console.error("Erro ao salvar:", err);
-      alert("Erro ao salvar time!");
+      alert("Erro ao salvar grupo!");
     }
   }
 
   // -------------------------------
-  // Excluir time
+  // Excluir grupo
   // -------------------------------
   async function handleDelete(id) {
     if (!window.confirm("Tem certeza que deseja excluir?")) return;
     try {
-      await deleteTeam(id);
-      loadTeams();
+      await deleteGroup(id); // Alterado de 'deleteTeam' para 'deleteGroup'
+      loadGroups();
     } catch (err) {
       console.error("Erro ao excluir:", err);
     }
   }
 
   // -------------------------------
-  // Editar time
+  // Editar grupo
   // -------------------------------
   function handleEdit(index) {
-    setForm(teams[index]);
-    setEditingTeam(index);
+    setForm(groups[index]); // Alterado de 'team' para 'group'
+    setEditingGroup(index);
   }
 
   // -------------------------------
   // Filtro de busca/categoria
   // -------------------------------
-  const filteredTeams = teams.filter((team) => {
-    const matchesSearch = team.name?.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = category === "all" || team.category === category;
+  const filteredGroups = groups.filter((group) => { // Alterado de 'teams' para 'groups'
+    const matchesSearch = group.name?.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory = category === "all" || group.category === category;
     return matchesSearch && matchesCategory;
   });
 
@@ -107,38 +107,37 @@ export default function Home() {
       />
 
       <main>
-        <section className="teams-section">
-          <h2>Times</h2>
-
-          <div className="teams-grid">
-            {filteredTeams.length > 0 ? (
-              filteredTeams.map((team, index) => (
-                <div key={team.id || index} className="team-card">
-                  <h3>{team.name}</h3>
-                  <p>{team.city}</p>
-                  <span className="category-tag">{team.category}</span>
+        <section className="groups-section"> {/* Alterado de 'teams-section' para 'groups-section' */}
+          <h2>Grupos</h2> {/* Alterado de 'Times' para 'Grupos' */}
+          <div className="groups-grid"> {/* Alterado de 'teams-grid' para 'groups-grid' */}
+            {filteredGroups.length > 0 ? ( // Alterado de 'filteredTeams' para 'filteredGroups'
+              filteredGroups.map((group, index) => ( // Alterado de 'team' para 'group'
+                <div key={group.id || index} className="group-card"> {/* Alterado de 'team-card' para 'group-card' */}
+                  <h3>{group.name}</h3>
+                  <p>{group.city}</p>
+                  <span className="category-tag">{group.category}</span>
 
                   <div className="actions">
                     <button onClick={() => handleEdit(index)}>Editar</button>
-                    <button className="delete" onClick={() => handleDelete(team.id)}>
+                    <button className="delete" onClick={() => handleDelete(group.id)}>  {/* Alterado de 'team' para 'group' */}
                       Excluir
                     </button>
                   </div>
                 </div>
               ))
             ) : (
-              <p>Nenhum time encontrado.</p>
+              <p>Nenhum grupo encontrado.</p>
             )}
           </div>
         </section>
 
         <section className="form-section">
-          <h2>{editingTeam !== null ? "Editar Time" : "Criar Novo Time"}</h2>
+          <h2>{editingGroup !== null ? "Editar Grupo" : "Criar Novo Grupo"}</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="name"
-              placeholder="Nome do time"
+              placeholder="Nome do grupo"
               value={form.name}
               onChange={handleChange}
             />
@@ -151,11 +150,7 @@ export default function Home() {
               onChange={handleChange}
             />
 
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleChange}
-            >
+            <select name="category" value={form.category} onChange={handleChange}>
               <option value="">Selecione a categoria</option>
               <option value="futebol">Futebol</option>
               <option value="basquete">Basquete</option>
@@ -164,7 +159,7 @@ export default function Home() {
             </select>
 
             <button type="submit">
-              {editingTeam !== null ? "Salvar" : "Adicionar"}
+              {editingGroup !== null ? "Salvar" : "Adicionar"}
             </button>
           </form>
         </section>

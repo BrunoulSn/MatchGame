@@ -17,7 +17,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/times" element={<Home />} /> {/* times usa home */}
+        <Route path="/home" element={<Home />} /> {/* Adiciona esta linha */}
+        <Route path="/times" element={<Home />} /> {/* 'times' também redireciona para 'Home' */}
       </Routes>
     </BrowserRouter>
   );

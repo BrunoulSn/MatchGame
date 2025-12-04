@@ -1,34 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/profile.css";
+import { getUserById, updateUser } from "../services/api";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
+  const [user, setUser] = useState(null);
   const [form, setForm] = useState({
-    name: "Fulano de Tal",
-    email: "fulano@email.com",
-    password: "123456",
-    cpf: "000.000.000-00",
-    cep: "12345-678",
-    address: "Rua Exemplo, 123",
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    birthDate: "",
+    skills: "",
+    availability: "",
   });
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (!storedUser) {
+      navigate("/login");
+      return;
+    }
+
+    async function loadUser() {
+      try {
+        const response = await getUserById(storedUser.id);
+        setUser(response.data);
+        setForm(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar usuário:", error);
+        setForm(storedUser);
+      }
+    }
+
+    loadUser();
+  }, [navigate]);
 
   const enableEditing = () => setEditing(true);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setEditing(false);
-    alert("Alterações salvas com sucesso!");
-  };
 
-  const addPhoto = () => alert("Adicionar foto");
-  const changePhoto = () => alert("Alterar foto");
-  const removePhoto = () => alert("Remover foto");
+    try {
+      await updateUser(form.id, form);
+      localStorage.setItem("user", JSON.stringify(form));
+      setEditing(false);
+      alert("Alterações salvas com sucesso!");
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
+      alert("Erro ao salvar alterações!");
+    }
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("user");
+    navigate("/login");
+  }
+
+  if (!form) return null;
 
   return (
     <div className="profile-page">
@@ -45,7 +80,7 @@ export default function Profile() {
           <li>Atividades</li>
           <li>Configurações</li>
           <li>
-            <button className="sidebar-btn" onClick={() => navigate("/cadastro")}>
+            <button className="sidebar-btn" onClick={handleLogout}>
               Sair
             </button>
           </li>
@@ -61,28 +96,32 @@ export default function Profile() {
               src="https://via.placeholder.com/150"
               alt="Foto de Perfil"
             />
-            <div className="buttons-photo">
-              <button type="button" onClick={addPhoto}>Adicionar</button>
-              <button type="button" onClick={changePhoto}>Alterar</button>
-              <button type="button" onClick={removePhoto}>Excluir</button>
-            </div>
           </div>
           <h2>{form.name}</h2>
         </div>
 
         <form className="profile-form" onSubmit={handleSubmit}>
-          {["name", "email", "password", "cpf", "cep", "address"].map((field) => (
-            <div key={field} className="form-group">
-              <label>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+          {[
+            { key: "name", label: "Nome" },
+            { key: "email", label: "E-mail" },
+            { key: "password", label: "Senha" },
+            { key: "phone", label: "Telefone" },
+            { key: "birthDate", label: "Data de Nascimento" },
+            { key: "skills", label: "Habilidades" },
+            { key: "availability", label: "Disponibilidade" },
+          ].map((field) => (
+            <div key={field.key} className="form-group">
+              <label>{field.label}:</label>
               <input
-                type={field === "password" ? "password" : "text"}
-                id={field}
-                value={form[field]}
+                type={field.key === "password" ? "password" : "text"}
+                name={field.key}
+                value={form[field.key] || ""}
                 disabled={!editing}
                 onChange={handleChange}
               />
             </div>
           ))}
+
           <div className="buttons">
             <button type="button" onClick={enableEditing} disabled={editing}>
               Editar

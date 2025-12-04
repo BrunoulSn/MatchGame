@@ -9,6 +9,9 @@ export default function Cadastro() {
     phone: "",
     password: "",
     confirmPassword: "",
+    birthDate: "",
+    skills: "",
+    availability: "",
   });
 
   const [mensagem, setMensagem] = useState("");
@@ -21,7 +24,7 @@ export default function Cadastro() {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.phone || !form.password || !form.confirmPassword) {
-      setMensagem("Preencha todos os campos!");
+      setMensagem("Preencha todos os campos obrigatórios!");
       return;
     }
 
@@ -34,15 +37,27 @@ export default function Cadastro() {
       await registerUser({
         name: form.name,
         email: form.email,
-        phone: form.phone,
         password: form.password,
+        phone: form.phone,
+        birthDate: form.birthDate || "2000-01-01",
+        skills: form.skills,
+        availability: form.availability,
       });
 
-      setMensagem("Cadastro realizado com sucesso!");
-      setForm({ name: "", email: "", phone: "", password: "", confirmPassword: "" });
+      setMensagem("✅ Cadastro realizado com sucesso!");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+        birthDate: "",
+        skills: "",
+        availability: "",
+      });
     } catch (err) {
       console.error("Erro ao cadastrar:", err);
-      setMensagem("Erro ao cadastrar usuário!");
+      setMensagem("❌ Erro ao cadastrar usuário!");
     }
   }
 
@@ -52,57 +67,30 @@ export default function Cadastro() {
         <h2>Cadastro</h2>
         <form onSubmit={handleSubmit}>
           <label>Nome:</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Digite seu nome"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="name" placeholder="Digite seu nome" value={form.name} onChange={handleChange} required />
 
           <label>E-mail:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Digite seu e-mail"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
+          <input type="email" name="email" placeholder="Digite seu e-mail" value={form.email} onChange={handleChange} required />
 
           <label>Telefone:</label>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Apenas números"
-            value={form.phone}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="phone" placeholder="Apenas números" value={form.phone} onChange={handleChange} required />
+
+          <label>Data de Nascimento:</label>
+          <input type="date" name="birthDate" value={form.birthDate} onChange={handleChange} />
+
+          <label>Habilidades:</label>
+          <input type="text" name="skills" placeholder="Ex: atacante, defesa..." value={form.skills} onChange={handleChange} />
+
+          <label>Disponibilidade:</label>
+          <input type="text" name="availability" placeholder="Ex: noites, finais de semana..." value={form.availability} onChange={handleChange} />
 
           <label>Senha:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Digite sua senha"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
+          <input type="password" name="password" placeholder="Digite sua senha" value={form.password} onChange={handleChange} required />
 
           <label>Confirmar senha:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirme sua senha"
-            value={form.confirmPassword}
-            onChange={handleChange}
-            required
-          />
+          <input type="password" name="confirmPassword" placeholder="Confirme sua senha" value={form.confirmPassword} onChange={handleChange} required />
 
           <button type="submit">Cadastrar</button>
-
           {mensagem && <div className="mensagem">{mensagem}</div>}
         </form>
 
