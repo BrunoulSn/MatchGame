@@ -56,7 +56,7 @@ export default function Home() {
     const payload = {
       name: form.name,
       description: form.description,
-      sports: form.sports, // ✅ garante que vai no corpo
+      sports: form.sports, 
       ownerId: loggedUser?.id,
     };
 
@@ -66,6 +66,7 @@ export default function Home() {
         alert("Grupo atualizado com sucesso!");
       } else {
         await createGroup(payload);
+        setForm((f) => ({ ...f, name: "", description: "", sports: "" }));
         alert("Grupo criado com sucesso!");
       }
 

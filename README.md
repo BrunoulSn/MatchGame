@@ -1,16 +1,153 @@
-# React + Vite
+🎮 GameMatch — Plataforma de Match Esportivo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GameMatch é uma plataforma full-stack voltada à criação e gerenciamento de grupos esportivos, conectando jogadores, esportes e horários.
+O sistema é composto por três camadas principais:
 
-Currently, two official plugins are available:
+🧠 Backend (GameMatch.Api) — API REST em .NET 7 + MySQL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚙️ BFF (BFF_GameMatch) — Camada intermediária (Backend for Frontend)
 
-## React Compiler
+💻 Frontend (React.js) — Interface web para usuários
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🧩 Estrutura do Projeto
+📦 GameMatch
+├── 📁 back
+│   ├── 📁 src
+│   │   ├── 📁 GameMatch.Api              # API principal (controllers e endpoints)
+│   │   ├── 📁 GameMatch.Infrastructure   # Mapeamento, entidades e migrations EF Core
+│   │   └── 📁 GameMatch.Services         # Regras de negócio
+│   └── GameMatch.sln
+│
+├── 📁 bff
+│   ├── 📁 BFF_GameMatch                  # BFF .NET 7 com HttpClient + Proxy para backend
+│   └── launchSettings.json
+│
+└── 📁 front
+    ├── 📁 src
+    │   ├── pages, components, services   # React com Axios + React Router
+    └── vite.config.js
 
-## Expanding the ESLint configuration
+⚙️ Tecnologias Principais
+Camada	Stack
+Backend	.NET 7, Entity Framework Core, MySQL, Swagger
+BFF	.NET 7, HttpClient, CORS, Serilog, AutoMapper
+Frontend	React + Vite, Axios, React Router
+Banco	MySQL 8.0
+Infra	Migrations com dotnet ef, ambiente local via localhost
+🚀 Configuração do Ambiente
+🧱 1️⃣ Backend (API GameMatch)
+Instalar dependências
+cd back/src/GameMatch.Api
+dotnet restore
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Criar o banco
+
+Certifique-se de que o MySQL está rodando e configure sua ConnectionString no appsettings.json:
+
+"ConnectionStrings": {
+  "Default": "Server=localhost;Database=gamematch;User=root;Password=suasenha;"
+}
+
+
+Depois, gere e aplique as migrations:
+
+dotnet ef migrations add InitialCreate --project ../GameMatch.Infrastructure --startup-project .
+dotnet ef database update --project ../GameMatch.Infrastructure --startup-project .
+
+Executar o backend
+dotnet run
+
+
+📡 O backend rodará por padrão em http://localhost:63533
+
+🧩 2️⃣ BFF (Backend For Frontend)
+Configuração
+
+No Program.cs, o BFF está configurado para apontar para o backend:
+
+var backendUrl = builder.Configuration["Backend:BaseUrl"] ?? "http://localhost:63533";
+
+Executar o BFF
+cd bff/BFF_GameMatch
+dotnet run
+
+
+🔗 O BFF rodará em http://localhost:5182
+
+O BFF é responsável por centralizar autenticação, requisições seguras e simplificar o consumo para o frontend.
+
+💻 3️⃣ Frontend (React)
+Instalar dependências
+cd front
+npm install
+
+Configurar API
+
+Edite src/services/api.js (ou equivalente):
+
+const api = axios.create({
+  baseURL: "http://localhost:5182/api", // chama o BFF
+});
+
+Executar o frontend
+npm run dev
+
+
+🌐 O front rodará em http://localhost:5173
+
+🔒 Segurança e CORS
+Origem	Porta	Permissão
+React Frontend	5173	✅ Autorizado no BFF
+BFF	5182	✅ Autorizado no Backend
+Backend	63533	✅ CORS liberado para BFF
+🧠 Fluxo de Comunicação
+[ React (5173) ]
+        ↓
+[BFF_GameMatch (5182)]
+        ↓
+[GameMatch.Api (63533)]
+        ↓
+[MySQL Database]
+
+🧰 Principais Funcionalidades
+
+Cadastro e login de usuários
+
+Criação e listagem de grupos esportivos
+
+Gerenciamento de times
+
+Integração total entre camadas
+
+Logs detalhados via Serilog
+
+Swagger com documentação automática
+
+🧾 Scripts Úteis
+Ação	Comando
+Criar migration	dotnet ef migrations add <Nome> --project ../GameMatch.Infrastructure --startup-project .
+Atualizar banco	dotnet ef database update --project ../GameMatch.Infrastructure --startup-project .
+Executar API	dotnet run
+Executar BFF	dotnet run
+Executar frontend	npm run dev
+🧱 Estrutura de Portas
+Serviço	Porta	URL
+Backend	63533	http://localhost:63533
+
+BFF	5182	http://localhost:5182
+
+Frontend	5173	http://localhost:5173
+🧩 Próximos Passos
+
+✅ Consolidar integração do login com JWT real
+
+🚀 Criar deploy automatizado (Docker + GitHub Actions)
+
+📊 Adicionar cache e paginação real nas queries
+
+🧑‍💻 Expandir entidades (Esportes, Partidas, Reservas de Quadra etc.)
+
+🧾 Licença
+
+Este projeto é de uso acadêmico e livre para estudo, manutenção e extensão.
+Desenvolvido por Abel Fonseca e equipe, com arquitetura full-stack moderna e modular.

@@ -32,11 +32,13 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+  type="password"
+  placeholder="Senha"
+  value={password}
+  autoComplete="current-password"
+  onChange={(e) => setPassword(e.target.value)}
+/>
+
         <button type="submit">Entrar</button>
         {error && <p className="error">{error}</p>}
       </form>
