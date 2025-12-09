@@ -92,7 +92,8 @@ namespace BFF_GameMatch.Services
                 var response = await _httpClient.PostAsJsonAsync($"api/groups/{groupId}/addMembro", joinDto);
                 response.EnsureSuccessStatusCode();
 
-                return await response.Content.ReadFromJsonAsync<GroupResponseDto>();
+                return await response.Content.ReadFromJsonAsync<GroupResponseDto>()
+                    ?? throw new InvalidOperationException("Resposta vazia do backend ao adicionar membro");
             }
             catch (Exception ex)
             {
@@ -118,6 +119,29 @@ namespace BFF_GameMatch.Services
             {
                 _logger.LogError(ex, "Erro ao remover membro do grupo {GroupId}", groupId);
                 return false;
+            }
+        }
+
+        public async Task DeleteGroupAsync(int groupId)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"api/groups/{groupId}");
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    throw new KeyNotFoundException($"Grupo {groupId} não encontrado");
+
+                response.EnsureSuccessStatusCode();
+            }
+            catch (KeyNotFoundException)
+            {
+                // Repassa KeyNotFoundException sem log duplicado
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao deletar grupo {GroupId}", groupId);
+                throw;
             }
         }
     }

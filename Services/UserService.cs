@@ -22,31 +22,22 @@ namespace BFF_GameMatch.Services
         {
             try
             {
-                // Buscar do backend como BackendUserDto
-                var backendUsers = await _httpClient.GetFromJsonAsync<List<BackendUserDto>>("api/users", ct);
-                var allUsers = backendUsers ?? new List<BackendUserDto>();
+                // Busca lista de usuários diretamente do backend
+                var backendUsers = await _httpClient.GetFromJsonAsync<List<UserDto>>("api/users", ct);
+                var allUsers = backendUsers ?? new List<UserDto>();
 
-                // Converter para UserDto
-                var userDtos = allUsers.Select(u => new UserDto
-                {
-                    Id = u.Id,
-                    Name = u.Name,
-                    Email = u.Email,
-                    Phone = u.Phone ?? string.Empty,
-                    CPF = string.Empty
-                }).ToList();
-
-                // Aplicar filtro
+                // Filtro opcional
                 if (!string.IsNullOrWhiteSpace(q))
                 {
-                    userDtos = userDtos.Where(u =>
-                        u.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ||
-                        u.Email.Contains(q, StringComparison.OrdinalIgnoreCase))
+                    allUsers = allUsers
+                        .Where(u =>
+                            u.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ||
+                            u.Email.Contains(q, StringComparison.OrdinalIgnoreCase))
                         .ToList();
                 }
 
                 // Paginação manual
-                var pagedItems = userDtos
+                var pagedItems = allUsers
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();
@@ -54,7 +45,7 @@ namespace BFF_GameMatch.Services
                 return new PagedResult<UserDto>
                 {
                     Items = pagedItems,
-                    TotalCount = userDtos.Count,
+                    TotalCount = allUsers.Count,
                     Page = page,
                     PageSize = pageSize
                 };
@@ -70,20 +61,16 @@ namespace BFF_GameMatch.Services
         {
             try
             {
-                var backendUser = await _httpClient.GetFromJsonAsync<BackendUserDto>($"api/users/{id}", ct);
-                if (backendUser == null) return null;
-
-                return new UserDto
-                {
-                    Id = backendUser.Id,
-                    Name = backendUser.Name,
-                    Email = backendUser.Email,
-                    Phone = backendUser.Phone ?? string.Empty,
-                    CPF = string.Empty
-                };
+                var backendUser = await _httpClient.GetFromJsonAsync<UserDto>($"api/users/{id}", ct);
+                return backendUser;
             }
             catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar usuário {UserId}", id);
                 return null;
             }
         }
@@ -92,13 +79,13 @@ namespace BFF_GameMatch.Services
         {
             try
             {
-                // 🔥 Envia "password" (texto), não "PasswordHash"
+                // Monta o JSON igual ao esperado pelo backend
                 var userData = new
                 {
                     Name = input.Name,
                     Email = input.Email,
+                    Password = input.Password,
                     Phone = input.Phone,
-                    Password = input.Password, // SENHA EM TEXTO
                     BirthDate = input.BirthDate,
                     Skills = input.Skills,
                     Availability = input.Availability
@@ -126,10 +113,10 @@ namespace BFF_GameMatch.Services
                     Name = input.Name,
                     Email = input.Email,
                     Phone = input.Phone,
-                    BirthDate = (DateOnly?)null,
-                    Skills = (string?)null,
-                    Availability = (string?)null,
-                    PasswordHash = input.Password // 🔥 Envia se tiver
+                    Password = input.Password,
+                    BirthDate = input.BirthDate,
+                    Skills = input.Skills,
+                    Availability = input.Availability
                 };
 
                 var response = await _httpClient.PutAsJsonAsync($"api/users/{input.Id}", userData, ct);

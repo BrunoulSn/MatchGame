@@ -6,7 +6,7 @@ using BFF_GameMatch.Services.Dtos.Group;
 
 namespace BFF_GameMatch.Validators
 {
-    public class CreateGroupRequestValidator : AbstractValidator<CreateGroupRequest>
+    public class CreateGroupRequestValidator : AbstractValidator<GroupCreateDto>
     {
         public CreateGroupRequestValidator()
         {

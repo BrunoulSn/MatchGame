@@ -12,8 +12,7 @@ namespace BFF_GameMatch.Mappings
         {
             // User mappings - usando apenas modelos do BFF
             CreateMap<User, UserDto>()
-                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone ?? ""))
-                .ForMember(dest => dest.CPF, opt => opt.MapFrom(src => "")); // CPF não existe no backend
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone ?? ""));
 
             CreateMap<UserCreateDto, User>();
             CreateMap<UserDto, User>();
@@ -34,7 +33,7 @@ namespace BFF_GameMatch.Mappings
             CreateMap<GroupResponseDto, Group>();
 
             // Mapeamento para CreateGroupRequest (se necessário)
-            CreateMap<CreateGroupRequest, Group>()
+            CreateMap<GroupCreateDto, Group>()
                 .ForMember(dest => dest.OwnerId, opt => opt.MapFrom(src => 1)); // Default, ajustar conforme autenticação
         }
     }

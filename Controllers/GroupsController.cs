@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using BFF_GameMatch.Models;
 using BFF_GameMatch.Services.Dtos.Group;
 using BFF_GameMatch.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BFF_GameMatch.Controllers // CORRIGIDO: Namespace correto
+namespace BFF_GameMatch.Controllers
 {
     [ApiController]
     [Route("api/groups")]
@@ -19,39 +18,45 @@ namespace BFF_GameMatch.Controllers // CORRIGIDO: Namespace correto
             _mapper = mapper;
         }
 
-        // Retorna todos os grupos
+        // GET: api/groups
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var groups = await _groupService.GetAllGroupsAsync();
-            return Ok(groups); // Já retorna List<GroupResponseDto>
+            return Ok(groups);
         }
 
-        // Retorna um grupo específico pelo ID
+        // GET: api/groups/{id}
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var group = await _groupService.GetGroupByIdAsync(id);
             if (group == null) return NotFound();
-            return Ok(group); // Já é GroupResponseDto
+            return Ok(group);
         }
 
-        // Cria um novo grupo
+        // POST: api/groups
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] GroupCreateDto dto)
         {
-            // CORRIGIDO: Passa diretamente o DTO para o serviço
             var createdGroup = await _groupService.CreateGroupAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = createdGroup.Id }, createdGroup);
         }
 
-        // Atualiza um grupo existente
+        // PUT: api/groups/{id}
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] GroupUpdateDto dto)
         {
-            // CORRIGIDO: Passa id e DTO separadamente
             var updatedGroup = await _groupService.UpdateGroupAsync(id, dto);
             if (updatedGroup == null) return NotFound();
+            return NoContent();
+        }
+
+        // ✅ DELETE: api/groups/{id}
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _groupService.DeleteGroupAsync(id);
             return NoContent();
         }
     }

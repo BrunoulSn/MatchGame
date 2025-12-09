@@ -24,7 +24,7 @@ builder.Services.AddAuthentication("DevAuth")
         BFF_GameMatch.Authentication.DevAuthHandler>("DevAuth", null);
 builder.Services.AddHttpClient("GameMatchApi", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5182"); // Porta do seu back GameMatch.Api
+    client.BaseAddress = new Uri("http://localhost:5182"); 
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
