@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
 import Header from "../components/header";
 import "../styles/home.css";
-import { getGroups, createGroup, updateGroup, deleteGroup } from "../services/api";
+import { getGroups, createGroup, updateGroup } from "../services/api";
 
 export default function Home() {
-  const [groups, setGroups] = useState([]); // Alterado de 'teams' para 'groups'
+  const [groups, setGroups] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
-  const [editingGroup, setEditingGroup] = useState(null); // Alterado de 'team' para 'group'
+  const [editingGroupId, setEditingGroupId] = useState(null);
 
   const [form, setForm] = useState({
     name: "",
-    city: "",
-    category: "",
+    description: "",
+    sports: "",
+    ownerId: 0,
   });
 
-  // -------------------------------
-  // Buscar grupos do backend (BFF)
-  // -------------------------------
-  async function loadGroups() { // Alterado de 'loadTeams' para 'loadGroups'
+  const [loggedUser, setLoggedUser] = useState(null);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("user"));
+    const storedUser = storedData?.user || storedData;
+    if (storedUser?.id) {
+      setLoggedUser(storedUser);
+      setForm((f) => ({ ...f, ownerId: storedUser.id }));
+    }
+  }, []);
+
+  async function loadGroups() {
     try {
-      const response = await getGroups(); // Alterado de 'getTeams' para 'getGroups'
-      setGroups(response.data.items || response.data || []); // Alterado de 'teams' para 'groups'
+      const response = await getGroups();
+      setGroups(response);
     } catch (error) {
       console.error("Erro ao carregar grupos:", error);
     }
@@ -31,69 +40,62 @@ export default function Home() {
     loadGroups();
   }, []);
 
-  // -------------------------------
-  // Atualizar formulário
-  // -------------------------------
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  // -------------------------------
-  // Criar ou editar grupo
-  // -------------------------------
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!form.name || !form.city || !form.category) {
+    if (!form.name || !form.description || !form.sports) {
       alert("Preencha todos os campos!");
       return;
     }
 
+    const payload = {
+      name: form.name,
+      description: form.description,
+      sports: form.sports, // ✅ garante que vai no corpo
+      ownerId: loggedUser?.id,
+    };
+
     try {
-      if (editingGroup !== null) {
-        const group = groups[editingGroup]; // Alterado de 'team' para 'group'
-        await updateGroup(group.id, form); // Alterado de 'updateTeam' para 'updateGroup'
-        alert("Grupo atualizado!");
+      if (editingGroupId) {
+        await updateGroup(editingGroupId, payload);
+        alert("Grupo atualizado com sucesso!");
       } else {
-        await createGroup(form); // Alterado de 'createTeam' para 'createGroup'
-        alert("Grupo criado!");
+        await createGroup(payload);
+        alert("Grupo criado com sucesso!");
       }
-      setForm({ name: "", city: "", category: "" });
-      setEditingGroup(null);
-      loadGroups(); // Recarrega os grupos após a criação ou edição
+
+      setForm({ name: "", description: "", sports: "", ownerId: loggedUser?.id });
+      setEditingGroupId(null);
+      loadGroups();
     } catch (err) {
-      console.error("Erro ao salvar:", err);
+      console.error("Erro ao salvar grupo:", err);
       alert("Erro ao salvar grupo!");
     }
   }
 
-  // -------------------------------
-  // Excluir grupo
-  // -------------------------------
-  async function handleDelete(id) {
-    if (!window.confirm("Tem certeza que deseja excluir?")) return;
-    try {
-      await deleteGroup(id); // Alterado de 'deleteTeam' para 'deleteGroup'
-      loadGroups();
-    } catch (err) {
-      console.error("Erro ao excluir:", err);
+  function handleEdit(group) {
+    if (group.ownerId !== loggedUser?.id) {
+      alert("Você só pode editar grupos que criou.");
+      return;
     }
+
+    setForm({
+      name: group.name || "",
+      description: group.description || "",
+      sports: group.sports || "",
+      ownerId: group.ownerId || loggedUser?.id || 0,
+    });
+    setEditingGroupId(group.id);
   }
 
-  // -------------------------------
-  // Editar grupo
-  // -------------------------------
-  function handleEdit(index) {
-    setForm(groups[index]); // Alterado de 'team' para 'group'
-    setEditingGroup(index);
-  }
-
-  // -------------------------------
-  // Filtro de busca/categoria
-  // -------------------------------
-  const filteredGroups = groups.filter((group) => { // Alterado de 'teams' para 'groups'
+  const filteredGroups = groups.filter((group) => {
     const matchesSearch = group.name?.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = category === "all" || group.category === category;
+    const matchesCategory = category === "all" || group.sports === category;
     return matchesSearch && matchesCategory;
   });
 
@@ -107,22 +109,31 @@ export default function Home() {
       />
 
       <main>
-        <section className="groups-section"> {/* Alterado de 'teams-section' para 'groups-section' */}
-          <h2>Grupos</h2> {/* Alterado de 'Times' para 'Grupos' */}
-          <div className="groups-grid"> {/* Alterado de 'teams-grid' para 'groups-grid' */}
-            {filteredGroups.length > 0 ? ( // Alterado de 'filteredTeams' para 'filteredGroups'
-              filteredGroups.map((group, index) => ( // Alterado de 'team' para 'group'
-                <div key={group.id || index} className="group-card"> {/* Alterado de 'team-card' para 'group-card' */}
+        <section className="groups-section">
+          <h2>Grupos</h2>
+          <div className="groups-grid">
+            {filteredGroups.length > 0 ? (
+              filteredGroups.map((group) => (
+                <div key={group.id} className="group-box">
                   <h3>{group.name}</h3>
-                  <p>{group.city}</p>
-                  <span className="category-tag">{group.category}</span>
+                  <p>{group.description}</p>
 
-                  <div className="actions">
-                    <button onClick={() => handleEdit(index)}>Editar</button>
-                    <button className="delete" onClick={() => handleDelete(group.id)}>  {/* Alterado de 'team' para 'group' */}
-                      Excluir
-                    </button>
+                  <div className="group-info">
+                    <p><strong>Esporte:</strong> {group.sports || "—"}</p>
+                    <p>
+                      <strong>Dono:</strong>{" "}
+                      {group.ownerName ||
+                        (group.ownerId === loggedUser?.id
+                          ? loggedUser.name
+                          : `Usuário ${group.ownerId}`)}
+                    </p>
                   </div>
+
+                  {group.ownerId === loggedUser?.id && (
+                    <div className="actions">
+                      <button onClick={() => handleEdit(group)}>Editar</button>
+                    </div>
+                  )}
                 </div>
               ))
             ) : (
@@ -132,7 +143,7 @@ export default function Home() {
         </section>
 
         <section className="form-section">
-          <h2>{editingGroup !== null ? "Editar Grupo" : "Criar Novo Grupo"}</h2>
+          <h2>{editingGroupId ? "Editar Grupo" : "Criar Novo Grupo"}</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -142,16 +153,15 @@ export default function Home() {
               onChange={handleChange}
             />
 
-            <input
-              type="text"
-              name="city"
-              placeholder="Cidade"
-              value={form.city}
+            <textarea
+              name="description"
+              placeholder="Descrição do grupo"
+              value={form.description}
               onChange={handleChange}
-            />
+            ></textarea>
 
-            <select name="category" value={form.category} onChange={handleChange}>
-              <option value="">Selecione a categoria</option>
+            <select name="sports" value={form.sports} onChange={handleChange}>
+              <option value="">Selecione o esporte</option>
               <option value="futebol">Futebol</option>
               <option value="basquete">Basquete</option>
               <option value="volei">Vôlei</option>
@@ -159,7 +169,7 @@ export default function Home() {
             </select>
 
             <button type="submit">
-              {editingGroup !== null ? "Salvar" : "Adicionar"}
+              {editingGroupId ? "Salvar Alterações" : "Adicionar"}
             </button>
           </form>
         </section>

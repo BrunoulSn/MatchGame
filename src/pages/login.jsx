@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api";
 import "../styles/login.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -10,9 +12,10 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const user = await loginUser(email, password);
-      localStorage.setItem("user", JSON.stringify(user));
-      window.location.href = "/home";
+      const result = await loginUser(email, password);
+      // Salva apenas o usuário (não a mensagem)
+      localStorage.setItem("user", JSON.stringify(result.user || result));
+      navigate("/home");
     } catch {
       setError("Usuário ou senha inválidos.");
     }
@@ -37,6 +40,12 @@ export default function Login() {
         <button type="submit">Entrar</button>
         {error && <p className="error">{error}</p>}
       </form>
+
+      {/* 🔹 Botão para cadastro */}
+      <div className="register-link">
+        <p>Ainda não tem conta?</p>
+        <button onClick={() => navigate("/cadastro")}>Criar conta</button>
+      </div>
     </div>
   );
 }

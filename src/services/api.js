@@ -1,68 +1,106 @@
-import axios from "axios";
+const API_URL = "http://localhost:8299"; // URL base do BFF
 
-const api = axios.create({
-  baseURL: "http://localhost:8299/api", // URL base do BFF
-  headers: { "Content-Type": "application/json" },
-});
+// ---------------- USUÁRIOS ----------------
 
-// ====================================
-// GROUPS (Times/Grupos)
-// ====================================
-
-export async function getGroups() {
-  return api.get("/groups");
-}
-
-export async function createGroup(data) {
-  return api.post("/groups", data);
-}
-
-export async function updateGroup(id, data) {
-  return api.put(`/groups/${id}`, data);
-}
-
-export async function deleteGroup(id) {
-  return api.delete(`/groups/${id}`);
-}
-
-// ====================================
-// USERS
-// ====================================
-
-export async function registerUser(data) {
-  return api.post("/v1/User", data);
+export async function loginUser(email, password) {
+  const res = await fetch(`${API_URL}/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  if (!res.ok) throw new Error("Usuário ou senha inválidos");
+  return await res.json();
 }
 
 export async function getUserById(id) {
-  return api.get(`/v1/User/${id}`);
+  const res = await fetch(`${API_URL}/api/v1/User/${id}`);
+  if (!res.ok) throw new Error("Erro ao buscar usuário");
+  return await res.json();
 }
 
 export async function updateUser(id, data) {
-  return api.put(`/v1/User/${id}`, data);
+  const res = await fetch(`${API_URL}/api/v1/User/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Erro ao atualizar usuário");
+  return await res.json();
 }
 
-export async function deleteUser(id) {
-  return api.delete(`/v1/User/${id}`);
+export async function registerUser(data) {
+  const res = await fetch(`${API_URL}/api/v1/User`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Erro ao cadastrar usuário");
+  return await res.json();
 }
 
-// ====================================
-// LOGIN FUNCTIONALITY
-// ====================================
+// ---------------- GRUPOS ----------------
 
-export async function loginUser(email, password) {
+// ---------------- GRUPOS ----------------
+export async function getGroups() {
+  const res = await fetch("http://localhost:8299/api/groups");
+  if (!res.ok) throw new Error("Erro ao buscar grupos");
+  return await res.json();
+}
+
+export async function createGroup(data) {
+  const body = {
+    name: data.name,
+    description: data.description,
+    sports: data.sports,
+    ownerId: data.ownerId || 0
+  };
+
+  const res = await fetch(`${API_URL}/api/groups`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error("Erro ao criar grupo:", errorText);
+    throw new Error("Erro ao criar grupo");
+  }
+
+  return await res.json();
+}
+
+export async function updateGroup(id, data) {
+  const body = {
+    name: data.name,
+    description: data.description,
+    sports: data.sports,
+    ownerId: data.ownerId || 0
+  };
+
+  const res = await fetch(`${API_URL}/api/groups/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error("Erro ao atualizar grupo:", errorText);
+    throw new Error("Erro ao atualizar grupo");
+  }
+
   try {
-    const response = await api.post("/v1/user/login", { email, password });
-    return response.data.user; // Retorna o usuário logado
-  } catch (error) {
-    throw new Error("Usuário ou senha inválidos");
+    return await res.json();
+  } catch {
+    return {};
   }
 }
 
-export function logoutUser() {
-  localStorage.removeItem("user");
+
+
+
+export async function deleteGroup(id) {
+  const res = await fetch(`${API_URL}/api/groups/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new Error("Erro ao deletar grupo");
 }
-
-const token = localStorage.getItem("user");
-if (token) api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-export default api;

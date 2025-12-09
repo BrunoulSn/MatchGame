@@ -8,6 +8,7 @@ export default function Profile() {
   const [editing, setEditing] = useState(false);
   const [user, setUser] = useState(null);
   const [form, setForm] = useState({
+    id: "",
     name: "",
     email: "",
     password: "",
@@ -18,8 +19,10 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (!storedUser) {
+    const storedData = JSON.parse(localStorage.getItem("user"));
+    const storedUser = storedData?.user || storedData; // compatível com ambos os formatos
+
+    if (!storedUser?.id) {
       navigate("/login");
       return;
     }
@@ -27,8 +30,8 @@ export default function Profile() {
     async function loadUser() {
       try {
         const response = await getUserById(storedUser.id);
-        setUser(response.data);
-        setForm(response.data);
+        setUser(response);
+        setForm(response);
       } catch (error) {
         console.error("Erro ao carregar usuário:", error);
         setForm(storedUser);
