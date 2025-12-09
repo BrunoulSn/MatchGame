@@ -20,12 +20,13 @@ public class UsersController : ControllerBase
                 u.Id,
                 u.Name,
                 u.Email,
+                u.Password,     // 🔥 Adiciona aqui
                 u.Phone,
                 u.BirthDate,
                 u.Skills,
                 u.Availability
             })
-            .ToListAsync(); // ⚠️ Agora funciona com o using correto
+            .ToListAsync();
 
         return Ok(users);
     }
@@ -41,12 +42,14 @@ public class UsersController : ControllerBase
             u.Id,
             u.Name,
             u.Email,
+            u.Password,       // 🔥 Adiciona aqui também
             u.Phone,
             u.BirthDate,
             u.Skills,
             u.Availability
         });
     }
+
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] User user)
